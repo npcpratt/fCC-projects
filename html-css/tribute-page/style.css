@@ -65,6 +65,7 @@ blockquote {
     height: auto;
 }
 #image {
+    display: block;
     border-top-right-radius: 20px;
 }
 #img-caption {
