@@ -91,20 +91,67 @@ h2#heading {
     font-family: roboto, sans-serif;
     font-weight: normal;
 }
-.flex-container {
-    display: flex;
-    padding: 50px;
+
+.h3 {
+    width: auto;
+    margin: auto;
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #bbdefb;
+    border-radius: 10px;
+    color: var(--shadow);
+    text-align: center;
 }
-.flex-container p{
+.p {
+    position: relative;
+    background-color: var(--secondary);
+    padding: 30px;
+    font-family: open sans, sans-serif;
+    border: solid 1px #bbdefb;
+}
+.timeline {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr auto auto 1fr;
+}
+.p.l {
+    grid-column: 1/2;
+    top: -65px;
+    border-radius: 20px 5px 20px 5px;
+    justify-self: end;
+    align-self: start;
+}
+.p.r {
+    align-self: end;
+}
+.h3.l {
+    grid-column: 2/3;
+}
+.h3.r {
+    grid-column: 3/4;
+}
+.p.r {
+    grid-column: 4/5;
+    border-radius: 5px 20px 5px 20px;
+    justify-self: left;
+}
+/* .flex-container p{
     font-family: open sans, sans-serif;
 }
 .right {
-    float: right;
+    justify-self: flex-end;
 }
 .left {
-    float: left;
-}
+    flex-direction: row-reverse;
+    justify-self: flex-start;
+} */
+
+
 p#footer {
+    margin-top: 70px;
     text-align: center;
     grid-area: footer;
     font-family: roboto, sans-serif;
