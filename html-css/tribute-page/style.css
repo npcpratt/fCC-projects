@@ -1,11 +1,12 @@
 :root {
     --primary: #3f51b5;
-    --secondary: #80d8ff;
+    --secondary: #e3f2fd;
+    --shadow: #263238;
 }
 body {
     margin: 0;
     background-color: white;
-    font-family: sans-serif;
+    font-family: roboto slab, sans-serif;
 }
 main {
     box-shadow: 0px 1px 5px gray;
@@ -17,6 +18,46 @@ main {
                          "content content"
                          "footer footer";
 }
+#header {
+    color: white;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    padding: 50px 30px 50px 30px;
+    background-color: var(--primary);
+    border-top-left-radius: 20px;
+}
+h1 {
+    font-size: 400%;
+    text-align: center;
+}
+blockquote {
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#open-quote {
+    display: inline-block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    top: -.5em; left: -.5em;
+    padding-left: 1rem;
+}
+#close-quote {
+    display: inline-block;
+    content: "\201D";
+    font-size: 80px;
+    position: absolute;
+    bottom: -.5em; right: -.5em;
+    padding-right: 1rem;
+}
+
+
 #img-div {
     font-size: 0;
     grid-area: img;
@@ -27,26 +68,14 @@ main {
     border-top-right-radius: 20px;
 }
 #img-caption {
+    font-family: roboto;
     padding: 5px;
     padding-left: 10px;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
-    background-color: var(--secondary);
+    background-color: whitesmoke;
 }
-#header {
-    color: white;
-    grid-area: header;
-    display: grid;
-    grid-template-columns: auto;
-    justify-items: center;
-    padding: 50px;
-    background-color: var(--primary);
-    border-top-left-radius: 20px;
-}
-h1 {
-    font-size: 80px;
-    text-align: center;
-}
+#free {display: none;}
 
 article {
     background-color: white;
@@ -56,9 +85,14 @@ article {
 }
 h2#heading {
     text-align: center;
+    font-family: roboto, sans-serif;
+    font-weight: normal;
 }
 .flex-container {
     display: flex;
+}
+.flex-container p{
+    font-family: open sans, sans-serif;
 }
 .right {
     float: right;
@@ -67,21 +101,93 @@ h2#heading {
     float: left;
 }
 p#footer {
+    text-align: center;
     grid-area: footer;
+    font-family: roboto;
+    font-weight:700;
 }
+
+
+
+
+/* for tablets */
 
 @media only screen and (max-width: 1080px) {
     main {
         margin: 0px;
         border-radius: 0;
+        box-shadow: none;
     }
     #header {
         border-radius: 0;
+    }
+    h1 {
+        font-size: 300%;
+    }
+    #close-quote {
+        bottom: -.4em;
     }
     #img-div {
         border-radius: 0;
     }
     #image {
         border-radius: 0;
+    }
+    #article {
+        border-radius: none;
+    }
+}
+
+
+
+
+/* for mobile */
+
+@media only screen and (max-width: 720px) {
+    main {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        display: inline-block;
+    }
+    #header {
+        border-radius: 0;
+        padding: 30px 0px 100px 0;
+    }
+    h1 {
+        font-size: 10vw;
+    }
+    #close-quote {
+        bottom: -.9em;
+    }
+    #img-div {
+        border-radius: 20px;
+        margin: auto;
+        margin-top: -460px;
+        margin-bottom: 40px;
+        border-radius: 20px 5px 20px 5px;
+        box-shadow: 0 1px 3px var(--shadow);
+        z-index: 3;
+    }
+    #free {
+        display: block;
+        width: 100%;
+        height:400px;
+        background-color: var(--secondary);
+    }
+    #image {
+        border-radius: 20px 5px 0 0;
+        z-index: 3;
+    }
+    #img-caption {
+        border-radius: 0 0 20px 5px;
+        background-color: whitesmoke;
+    }
+    article {
+        border-radius: none;
+        padding: 30px;
+    }
+    h2#heading {
+        text-align: left;
     }
 }
