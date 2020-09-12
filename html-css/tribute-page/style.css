@@ -73,9 +73,12 @@ blockquote {
     padding-left: 10px;
     font-size: 13px;
     text-align: left;
-    background-color: whitesmoke;
+    color: white;
+    background-color: #424242;
 }
-#free {display: none;}
+#separator {
+    display: none;
+}
 
 article {
     background-color: white;
@@ -90,6 +93,7 @@ h2#heading {
 }
 .flex-container {
     display: flex;
+    padding: 50px;
 }
 .flex-container p{
     font-family: open sans, sans-serif;
@@ -103,7 +107,7 @@ h2#heading {
 p#footer {
     text-align: center;
     grid-area: footer;
-    font-family: roboto;
+    font-family: roboto, sans-serif;
     font-weight:700;
 }
 
@@ -120,12 +124,13 @@ p#footer {
     }
     #header {
         border-radius: 0;
+        padding-right: 20px;
     }
     h1 {
         font-size: 300%;
     }
     #close-quote {
-        bottom: -.4em;
+        bottom: -.5em;
     }
     #img-div {
         border-radius: 0;
@@ -161,19 +166,12 @@ p#footer {
         bottom: -.9em;
     }
     #img-div {
-        border-radius: 20px;
         margin: auto;
         margin-top: -460px;
         margin-bottom: 40px;
         border-radius: 20px 5px 20px 5px;
-        box-shadow: 0 1px 3px var(--shadow);
+        box-shadow: 0 0px 50px -10px var(--shadow);
         z-index: 3;
-    }
-    #free {
-        display: block;
-        width: 100%;
-        height:400px;
-        background-color: var(--secondary);
     }
     #image {
         border-radius: 20px 5px 0 0;
@@ -181,7 +179,14 @@ p#footer {
     }
     #img-caption {
         border-radius: 0 0 20px 5px;
-        background-color: whitesmoke;
+        /* color: black;
+        background-color: whitesmoke; */
+    }
+    #separator {
+        display: block;
+        width: 100%;
+        height:400px;
+        background-color: var(--secondary);
     }
     article {
         border-radius: none;
