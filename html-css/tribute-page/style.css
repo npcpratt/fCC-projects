@@ -69,7 +69,7 @@ blockquote {
 }
 #img-caption {
     font-family: roboto;
-    padding: 5px;
+    padding: 10px;
     padding-left: 10px;
     font-size: 13px;
     text-align: left;
@@ -89,7 +89,11 @@ article {
 h2#heading {
     text-align: center;
     font-family: roboto, sans-serif;
-    font-weight: normal;
+    font-weight: bold;
+}
+hr {
+    border: 1px solid #bbdefb;
+    width: 50vmin;
 }
 
 .h3 {
@@ -102,13 +106,14 @@ h2#heading {
     border-radius: 10px;
     color: var(--shadow);
     text-align: center;
+    font-weight: bold;
 }
 .p {
     position: relative;
     background-color: var(--secondary);
     padding: 30px;
     font-family: open sans, sans-serif;
-    border: solid 1px #bbdefb;
+    border: solid 2px #bbdefb;
 }
 .timeline {
     margin-top: 50px;
@@ -138,24 +143,16 @@ h2#heading {
     border-radius: 5px 20px 5px 20px;
     justify-self: left;
 }
-/* .flex-container p{
-    font-family: open sans, sans-serif;
-}
-.right {
-    justify-self: flex-end;
-}
-.left {
-    flex-direction: row-reverse;
-    justify-self: flex-start;
-} */
 
 
 p#footer {
     margin-top: 70px;
+    margin-bottom:50px;
     text-align: center;
     grid-area: footer;
     font-family: roboto, sans-serif;
     font-weight:700;
+    font-size: 20px;
 }
 
 
@@ -188,6 +185,49 @@ p#footer {
     #article {
         border-radius: none;
     }
+    .timeline {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .timeline > div {margin:10px}
+
+    .p {
+        width: 65vw;
+    }
+    .h3 {margin:10px; flex-grow: 1;}
+
+    .p.l, .h3.l{justify-self: flex-start;}
+    .p.r, .h3.r{justify-self: flex-end;}
+
+    .p.l.one {order:1}
+    .h3.l.one {order:2}
+    .h3.r.one {order:3}
+    .p.r.one {order:4}
+
+    .p.l.two {order:5}
+    .h3.l.two {order:6}
+    .h3.r.two {order:7}
+    .p.r.two {order:8}
+    
+    .p.l.three {order:9}
+    .h3.l.three {order:10}
+    .h3.r.three {order:11}
+    .p.r.three {order:12}
+    
+    .p.l.four {order:13}
+    .h3.l.four {order:14}
+    .h3.r.four {order:15}
+    .p.r.four {order:16}
+    
+    .p.l.five {order:17}
+    .h3.l.five {order:18}
+    .h3.r.five {order:19}
+    .p.r.five {order:20}
+
+    /* reset */
+    .p.l {top:0;}
 }
 
 
@@ -215,7 +255,7 @@ p#footer {
     #img-div {
         margin: auto;
         margin-top: -460px;
-        margin-bottom: 40px;
+        margin-bottom: 80px;
         border-radius: 20px 5px 20px 5px;
         box-shadow: 0 0px 50px -10px var(--shadow);
         z-index: 3;
@@ -237,9 +277,35 @@ p#footer {
     }
     article {
         border-radius: none;
-        padding: 30px;
+        padding: 10px;
     }
-    h2#heading {
-        text-align: left;
+    #footer{padding-bottom: 55px;}
+}
+
+/* flexbox mobile */
+
+@media only screen and (max-width: 860px) {
+    .timeline {
+        display: block;
+        text-align: center;
+    }
+    .h3 {
+        width: 60px;
+        position: relative;
+        z-index: 1;
+    }
+    .p.l, .p.r {
+        margin:auto;
+        width: 70vw;
+        position: relative;
+        top: -30px;
+        border-radius: 10px;
+    }
+    .h3.r.four > span {
+        display: none;
+    }
+    .h3.r.four {width: 120px;}
+    .h3.r.four::after {
+        content:"1993 - 2002";
     }
 }
