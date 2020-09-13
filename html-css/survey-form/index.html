@@ -5,18 +5,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Survey Form</title>
+    <title>Philosophies - Survey Form</title>
 </head>
 
 <body>
-    <h1 id="title"></h1>
-    <p id="description"></p>
-    <form id="survey-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" />
-    </form>
+    <div class="container">
+        <h1 id="title">A Survey On Philosophies</h1>
+        <p id="description">Thank you for taking the time to help us seek insight into the various philosophies of life people go by.</p>
+        <form id="survey-form">
+            <div class="form-group">
+                <label id="name-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name" required/>
+            </div>
+            <div class="form-group">
+                <label id="email-label" for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Enter your Email" required/>
+            </div>
+            <div class="form-group">
+                <label id="number-label" for="number">Age<span class="clue">(Optional)</span></label>
+                <input class="form-control" type="number" id="number" name="age" min="9" max="99" placeholder="Age"/>
+            </div>
+            <div class="form-group">
+                <p>What is the meaning of life?</p>
+                <select id="dropdown" name="bruh" class="form-control" required>
+                    <option disabled selected value>Select an option</option>
+                    <option value="fortyTwo">42</option>
+                    <option value="noMeaning">There is no meaning</option>
+                    <option value="ownMeaning">You make your own meaning</option>
+                    <option value="knowGod">To know God</option>
+                    <option value="other">¯\_(ツ)_/¯</option>
+                </select>
+            </div>
+        <div class="form-group">
+            <p>What is this glass?</p>
+            <img id="glass" src="files/glass.png"/>
+            <label><input type="radio" name="glass" class="input-radio" value="half-empty" required />Half empty</label>
+            <label><input type="radio" name="glass" class="input-radio" value="half-full" />Half full</label>
+            <label><input type="radio" name="glass" class="input-radio" value="depends" />Depends on the day</label>
+        </div>
+        <div class="form-group">
+            <p>Which part of the world are you from?</p>
+            <select id="location" name="location" class="form-control" required>
+                <option disabled selected value>Select continent</option>
+                <option value="asia">Asia</option>
+                <option value="africa">Africa</option>
+                <option value="northAmerica">North America</option>
+                <option value="southAmerica">South America</option>
+                <option value="europe">Europe</option>
+                <option value="oceania">Oceania</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <p>Which of these philosophies are you familiar with?<span class="clue">(Check all that apply)</span></p>
+            <label><input type="checkbox" name="philosophies" value="nihilism" class="input-checkbox" />Nihilism</label>
+            <label><input type="checkbox" name="philosophies" value="existentialism" class="input-checkbox" />Existentialism</label>
+            <label><input type="checkbox" name="philosophies" value="stoicism" class="input-checkbox" />Stoicism</label>
+            <label><input type="checkbox" name="philosophies" value="absurdism" class="input-checkbox" />Absurdism</label>
+            <label><input type="checkbox" name="philosophies" value="hedonism" class="input-checkbox" />Hedonism</label>
+            <label><input type="checkbox" name="philosophies" value="marxism" class="input-checkbox" />Marxism</label>
+            <label><input type="checkbox" name="philosophies" value="taoism" class="input-checkbox" />Taoism</label>
+            <label><input type="checkbox" name="philosophies" value="rationalism" class="input-checkbox" />Rationalism</label>
+            <label><input type="checkbox" name="philosophies" value="relativism" class="input-checkbox" />Relativism</label>
+            <label><input type="checkbox" name="philosophies" value="buddhism" class="input-checkbox" />Buddhism</label>
+        </div>
+        <div class="form-group">
+            <p>Any comments?</p>
+            <textarea id="comments" name="comment" class="input-textarea" placeholder="Enter your comment here..."></textarea>
+        </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="submit-button">Submit</button>
+        </div>
+        </form>
+    </div>
 </body>
 
 </html>
