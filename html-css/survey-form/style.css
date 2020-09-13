@@ -1,13 +1,20 @@
 :root {
-    --primary: #f44336;
+    --primary-light: #b39ddb;
+    --primary: #673ab7;
+    --primary-med: #512da8;
+    --primary-dark: #311b92;
     --secondary: #ffc107;
-    --light: #ffebee;
+    --light: #ffecb3;
     --shadow: #263238;
     --border: #9e9e9e;
 }
 body{
     font-family: signika, open sans, sans-serif;
-    background-color: var(--light);
+    font-weight: 100;
+    font-size: larger;
+    line-height: 1.5;
+    color: white;
+    background-color: var(--primary-med);
     margin: 20px;
 }
 
@@ -18,11 +25,13 @@ h1 {
     position: absolute;
     right: 0;
     left: 0;
+    top: 25px;
     font-family: roboto slab;
     font-weight: normal;
+    font-size: 25px;
     text-align: center;
     padding: 20px 0 20px 0;
-    width: 500px;
+    width: 400px;
     margin: auto;
     border-radius: 50px;
     color: white;
@@ -31,8 +40,7 @@ h1 {
 }
 p#description {
     font-family: open sans;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 17px;
     font-style: italic;
     text-align: center;
     position: relative;
@@ -45,22 +53,46 @@ form {
     margin-bottom: 50px;
     padding: 50px;
     padding-top: 150px;
-    width: 600px;
+    width: 700px;
     border-radius: 20px;
-    border: 3px dashed var(--border);
-    background-color: white;
+    border: 3px dashed var(--secondary);
+    background-color: var(--primary-dark);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 20px;
 }
 .form-group {
     display: flex;
     flex-direction: column;
 }
+.form-control, .input-textarea {
+    font-family: open sans, sans-serif;
+    font-size: 1rem;
+    padding: 1em;
+    border: 3px solid var(--secondary);
+    border-radius: 5px;
+    background-color: #fff8e1;
+}
+.clue {
+    position: relative;
+    font-size: .9rem;
+    margin-left: 0.25rem;
+    bottom: 0.05rem;
+}
+input#number {
+    max-width: 150px;
+}
+#number-label {
+    margin-top: 15px;
+}
+#name, #email, #number {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 .glass {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-areas: "a a"
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "b a"
                          "b c";
 }
 p#glass {
@@ -68,7 +100,10 @@ p#glass {
 }
 img#glass-image{
     grid-area: b;
-    max-width: 100px;
+    max-width: 80px;
+    margin-right: 30px;
+    align-self: end;
+    justify-self: end;
 }
 .glass-radio {
     grid-area: c;
@@ -85,31 +120,47 @@ img#glass-image{
 .philosophies p {
     grid-column: span 2;
 }
-.submit-button {
-    grid-column: 1/3;
-}
 .input-textarea {
-    min-height: 100px;
+    min-height: 140px;
     resize: vertical;
+}
+.span-two {
+    grid-column: span 2;
+}
+.submit-button {
+    padding:10px;
+    max-width: 100px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: roboto slab, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* for tablets */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 860px) {
     body {
         margin: 10;
-        background-color: white;
+        background-color: var(--primary-med);
     }
     h1 {
         box-sizing: border-box;
         border-radius: 0;
         position: relative;
+        top: 0;
         width: 100%;
         padding: 35px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     .container{
         border-radius: 20px;
-        outline:  3px dashed var(--border);
+        outline:  3px dashed var(--secondary);
     }
     p#description {
         box-sizing: border-box;
@@ -119,7 +170,6 @@ img#glass-image{
         width: 100%;
         max-width: 500px;
         padding: 30px;
-        background-color: white;
     }
     form {
         box-sizing: border-box;
@@ -127,14 +177,37 @@ img#glass-image{
         border: none;
         margin: 0;
         width: 100%;
+        height: 100%;
         padding: 50px;
+        z-index: -1;
+    }
+    #name, #email, #number {
+        margin-bottom: 0;
+    }
+    img#glass-image {
+        margin-right: 10px;
     }
 }
 
 /* for mobile */
 
-@media only screen and (max-width: 720) {
+@media only screen and (max-width: 730px) {
+    body {
+        margin: 0;
+        background-color: var(--primary-med);
+    }
     form {
         grid-template-columns: 1fr;
+        padding: 30px;
+    }
+    #email-label {
+        margin-top: 15px;
+    }
+    img#glass-image {
+        margin-left: 20px;
+        margin-right: 30px;
+    }
+    .span-two {
+        grid-column: span 1;
     }
 }
