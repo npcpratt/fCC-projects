@@ -1,0 +1,140 @@
+:root {
+    --primary: #f44336;
+    --secondary: #ffc107;
+    --light: #ffebee;
+    --shadow: #263238;
+    --border: #9e9e9e;
+}
+body{
+    font-family: signika, open sans, sans-serif;
+    background-color: var(--light);
+    margin: 20px;
+}
+
+/* .container {
+} */
+
+h1 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    font-family: roboto slab;
+    font-weight: normal;
+    text-align: center;
+    padding: 20px 0 20px 0;
+    width: 500px;
+    margin: auto;
+    border-radius: 50px;
+    color: white;
+    background-color: var(--primary);
+    /* box-shadow: 0 2px 2px var(--shadow); */
+}
+p#description {
+    font-family: open sans;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    width:500px;
+    margin: auto;
+}
+form {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 50px;
+    padding-top: 150px;
+    width: 600px;
+    border-radius: 20px;
+    border: 3px dashed var(--border);
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.glass {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "a a"
+                         "b c";
+}
+p#glass {
+    grid-area: a;
+}
+img#glass-image{
+    grid-area: b;
+    max-width: 100px;
+}
+.glass-radio {
+    grid-area: c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.philosophies {
+    display: grid;
+    /* grid-auto-flow: column;
+    grid-template-rows: repeat(6, auto); */
+    grid-template-columns: 1fr 1fr;
+}
+.philosophies p {
+    grid-column: span 2;
+}
+.submit-button {
+    grid-column: 1/3;
+}
+.input-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* for tablets */
+
+@media only screen and (max-width: 768px) {
+    body {
+        margin: 10;
+        background-color: white;
+    }
+    h1 {
+        box-sizing: border-box;
+        border-radius: 0;
+        position: relative;
+        width: 100%;
+        padding: 35px;
+    }
+    .container{
+        border-radius: 20px;
+        outline:  3px dashed var(--border);
+    }
+    p#description {
+        box-sizing: border-box;
+        position: relative;
+        top: 0;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: white;
+    }
+    form {
+        box-sizing: border-box;
+        border-radius: 0;
+        border: none;
+        margin: 0;
+        width: 100%;
+        padding: 50px;
+    }
+}
+
+/* for mobile */
+
+@media only screen and (max-width: 720) {
+    form {
+        grid-template-columns: 1fr;
+    }
+}

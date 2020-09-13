@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Open+Sans|Signika">
     <link rel="stylesheet" href="style.css" />
     <title>Philosophies - Survey Form</title>
 </head>
@@ -36,12 +38,14 @@
                     <option value="other">¯\_(ツ)_/¯</option>
                 </select>
             </div>
-        <div class="form-group">
-            <p>What is this glass?</p>
-            <img id="glass" src="files/glass.png"/>
-            <label><input type="radio" name="glass" class="input-radio" value="half-empty" required />Half empty</label>
-            <label><input type="radio" name="glass" class="input-radio" value="half-full" />Half full</label>
-            <label><input type="radio" name="glass" class="input-radio" value="depends" />Depends on the day</label>
+        <div class="form-group glass">
+            <p id="glass">What is this glass?</p>
+            <img id="glass-image" src="files/glass.png"/>
+            <div class="glass-radio">
+                <label><input type="radio" name="glass" class="input-radio" value="half-empty" required />Half empty</label>
+                <label><input type="radio" name="glass" class="input-radio" value="half-full" />Half full</label>
+                <label><input type="radio" name="glass" class="input-radio" value="depends" />Depends on the day</label>
+            </div>
         </div>
         <div class="form-group">
             <p>Which part of the world are you from?</p>
@@ -55,7 +59,7 @@
                 <option value="oceania">Oceania</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group philosophies">
             <p>Which of these philosophies are you familiar with?<span class="clue">(Check all that apply)</span></p>
             <label><input type="checkbox" name="philosophies" value="nihilism" class="input-checkbox" />Nihilism</label>
             <label><input type="checkbox" name="philosophies" value="existentialism" class="input-checkbox" />Existentialism</label>
