@@ -316,8 +316,12 @@ footer ul > li {
     nav a:hover {
         background-color: transparent;
     }
+    h1 {
+        margin: 110px 10px 50px 10px;
+    }
     #about > img {
         max-width: 75%;
+        margin: 50px 0 50px 0;
     }
     .flex {
         right: 0;
