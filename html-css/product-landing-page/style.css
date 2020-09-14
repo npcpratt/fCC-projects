@@ -37,15 +37,22 @@ nav > ul {
 }
 li {
     list-style: none;
-    padding: 20px;
 }
 a {
     color: white;
     text-decoration: none;
 }
+nav a {
+    padding: 20px;
+    transition: 0.1s;
+    border-radius: 10px;
+}
+nav a:hover {
+    transition: 0.1s;
+    background-color: rgb(170, 37, 46);
+}
 h1 {
-    margin-top: 140px;
-    margin-bottom: 50px;
+    margin: 140px 10px 50px 10px;
     font-weight: normal;
     text-align: center;
 }
@@ -54,6 +61,7 @@ h1 {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     margin-bottom: 100px;
+    width: 100%;
 }
 #about > img {
     position: relative;
@@ -90,7 +98,7 @@ h2 {
     width:100%;
     background-color: whitesmoke;
 }
-#video {
+#video-container {
     width: 800px;
     padding: 50px 10px 50px 10px;
 }
@@ -153,13 +161,13 @@ h2 {
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
-    background-color: whitesmoke;
     transition: 0.1s;
+    background-color:  #ffca28;
 }
 .btn:hover {
+    background-color: #ffd54f;
     transition: 0.1s;
     box-shadow: 0 1px 5px rgb(70, 0, 0);
-    background-color: white;
 }
 #newsletter {
     display: flex;
@@ -179,9 +187,12 @@ h2 {
     align-items: flex-start;
     width: 50%;
 }
+label {
+    font-size: 20px;
+}
 #form input {
     font-size: 1rem;
-    margin-top: 10px;
+    margin-top: 15px;
     border-radius: .5rem;
     font-family: lato, sans-serif;
 }
@@ -193,9 +204,16 @@ h2 {
     padding: 20px;
 }
 #submit {
-    padding: 10px;
+    padding: 12px;
+    font-weight: bold;
     border: none;
-    background-color: white;
+    background-color: #ffca28;
+    cursor: pointer;
+    transition: 0.1s;
+}
+#submit:hover {
+    transition: 0.1s;
+    box-shadow: 0 1px 5px rgb(70, 0, 0);
 }
 footer {
     display: flex;
@@ -229,4 +247,111 @@ footer ul > li {
 #credits a {
     position: static;
     padding: 10px 0 10px 10px;
+}
+
+@media only screen and (max-width: 1220px) {
+    #about {
+        grid-template-columns: auto;
+        justify-content: center;
+        align-content: stretch;
+        position: relative;
+        top: -50px;
+        margin-bottom: 0;
+    }
+    .flex {
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (max-width: 960px) {
+    .logo {
+        padding:10px;
+    }
+    nav a {
+        padding: 15px;
+    }
+    nav ul {
+        padding: 0;
+    }
+    #newsletter {
+        flex-direction: column;
+        align-items: center;
+    }
+    #form {
+        width: 70%;
+        margin-bottom: 10px;
+    }
+    #newsletter-desc {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    #email {
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    #header-img {
+        width: 30px;
+    }
+    #pew-logo {
+        padding: 0;
+        padding-left: 10px;
+        font-size: 17px;
+    }
+    nav ul, li {
+        padding: 0;
+        margin: 0;
+    }
+    nav li {
+        display: flex;
+    }
+    nav a {
+        margin: 0;
+        padding: 0;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    nav a:hover {
+        background-color: transparent;
+    }
+    #about > img {
+        max-width: 75%;
+    }
+    .flex {
+        right: 0;
+        width: 80%;
+        align-self: center;
+    }
+    #right {
+        right: 0;
+    }
+    #form {
+        width: 90%;
+    }
+    footer {
+        flex-direction: column;
+        justify-content: center;
+    }
+    #footer {
+        margin-top: 8px;
+        align-items: center;
+    }
+}
+@media only screen and (max-width:420px) {
+    .flex {
+        max-width: 75%;
+    }
+    #credits {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #credits span {
+        margin-bottom: 10px;
+    }
+    #credits a {
+        padding: 10px 0 10px 0;
+    }
 }

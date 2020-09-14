@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <header id="header">
         <div class="logo">
             <img id="header-img" src="files/logo-white.png" width="60">
@@ -17,7 +18,7 @@
         <nav id="nav-bar">
             <ul>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#product-demo" class="nav-link">Demo</a></li>
+                <li><a href="#product-demo" class="nav-link">Preview</a></li>
                 <li><a href="#pricing" class="nav-link">Pricing</a></li>
             </ul>
         </nav>
@@ -41,9 +42,9 @@
         </div>
     </section>
     <section id="product-demo">
-        <article id="video">
+        <article id="video-container">
             <div class="wrapper">
-                <iframe src="https://www.youtube-nocookie.com/embed/tRaWuFFbdbE?controls=0&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="video" src="https://www.youtube-nocookie.com/embed/tRaWuFFbdbE?controls=0&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </article>
     </section>
@@ -65,15 +66,15 @@
         </div>
     </section>
     <section id="newsletter">
-        <div id="newsletter-desc">
-            <h2>Newsletter</h2>
-            <p>Sign up for members only discounts, news on upcoming products and competitions!</p>
-        </div>
-        <form id="form" action="https://www.freecodecamp.com/email-submit">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email">
-            <input id="submit" type="submit" value="Sign up">
-        </form>
+            <div id="newsletter-desc">
+                <h2>Newsletter</h2>
+                <p>Sign up for members only discounts, news on upcoming products and competitions!</p>
+            </div>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+                <input id="submit" type="submit" value="Sign up">
+            </form>
     </section>
     <footer>
         <div id="credits">
