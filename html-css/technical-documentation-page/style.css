@@ -1,28 +1,95 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:400|Lato";
 
+:root {
+    --body: #b3e5fc;
+    --primary: white;
+    --secondary: #ececec;
+    --nav: white;
+    --dark: #01579b;
+    --shadow: #607d8b;
+}
+
 html {
     font-family: open sans, sans-serif;
 }
 body {
+    margin: 0;
+    background-color: var(--body);
+}
+.grid {
     display: grid;
     grid-template-columns: 300px 1fr;
+    height :100%;
+}
+nav {
+    box-sizing: border-box;
+    width: 280px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--shadow);
+    overflow: auto;
+    position: fixed;
+    background-color: var(--nav);
+    grid-column: 1/2;
+}
+nav header {
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background-color: var(--dark);
+    margin-bottom: 10px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    font-size: 17px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.1s;
+}
+.nav-link:hover {
+    transition: 0.1s;
+    background-color: #e3f2fd;
+}
+
+main {
+    background-color: var(--primary);
+    grid-column: 2/3;
+    padding: 60px;
+    padding-top: 40px;
+    margin: 10px 10px 10px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    min-width: 600px;
 }
 header {
-    font-family: open sans, sans-serif;
+    font-family: lato, sans-serif;
     font-size: 25px;
+}
+section {
+    margin-bottom: 40px;
 }
 code {
     display: block;
     white-space: pre;
-    background-color: #f7f7f7;
+    background-color: var(--secondary);
     padding: 30px;
     margin-bottom: 20px;
     margin-top: 20px;
     border-radius: 5px;
 }
 kbd {
-    background-color: #f7f7f7;
-    padding: 5px;
+    background-color: var(--secondary);
+    padding: 3px;
     border-radius: 5px;
     position: relative;
     bottom: 2px;
@@ -38,8 +105,43 @@ kbd {
     padding: 0;
 }
 
+#title-link::after, #title::after {
+    content: ": Introduction";
+    font-weight: normal;
+}
+#title {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+p > a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
 @media only screen and (max-width: 960px) {
-    body {
-        grid-template-columns: 1fr;
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+    nav {
+        position: relative;
+        margin: 0;
+        border-radius: 0 0 10px 10px;
+        box-shadow: none;
+        width: 100%;
+        text-align: center;
+    }
+    main {
+        margin: 0;
+        margin-top: 5px;
+        border-radius: 10px 10px 0 0;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    main {
+        padding-left: 25px;
+        padding-right: 25px;
     }
 }
