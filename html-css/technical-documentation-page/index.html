@@ -3,10 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <link rel="icon" href="files/favicon.png">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Functions | Dart documentation</title>
 </head>
 <body>
-    
+    <nav id="navbar">
+        <header>Dart documentation</header>
+        <ul>
+            <li><a href="#functions" class="nav-link">Functions</a></li>
+            <li><a href="#parameters" class="nav-link">Parameters</a></li>
+            <li><a href="#the_main_function" class="nav-link">The main() function</a></li>
+            <li><a href="#functions_as_first_class_objects" class="nav-link">Functions as first-class objects</a></li>
+            <li><a href="#anonymous_functions" class="nav-link">Anonymous functions</a></li>
+            <li><a href="#lexical_scope" class="nav-link">Lexical scope</a></li>
+            <li><a href="#lexical_closures" class="nav-link">Lexical closures</a></li>
+            <li><a href="#testing_functions_for_equality" class="nav-link">Testing functions for equality</a></li>
+            <li><a href="#return_values" class="nav-link">Return values</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section class="main-section" id="functions">
+            <header>Functions</header>
+            <p>
+                Dart is a true object-oriented language, so even functions are objects and have a type, Function. This means that functions can be assigned to variables or passed as arguments to other functions. You can also call an instance of a Dart class as if it were a function. For details, see <a href="#">Callable classes</a>.
+            </p>
+            <p>
+                Here’s an example of implementing a function:
+            </p>
+            <code>bool isNoble(int atomicNumber) {
+  return _nobleGases[atomicNumber] != null
+}
+</code>
+            <i>Note:</i>
+            <ul>
+                <li>Although Effective Dart recommends type annotations for public APIs, the function still works if you omit the types:
+                    <code>isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}</code>
+                </li>
+                <li>For functions that contain just one expression, you can use a shorthand syntax:
+                    <code>bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;</code>
+                </li>
+                <li>The <kbd>=> expr syntax</kbd> is a shorthand for <kbd>{ return expr; }</kbd>. The <kbd>=></kbd> notation is sometimes referred to as arrow syntax.</li>
+            </ul>
+        </section>
+        <section class="main-section" id="parameters">
+            <header>Parameters</header>
+            <p>
+                A function can have any number of required positional parameters. These can be followed either by named parameters or by optional positional parameters (but not both).
+            </p>
+            <ul>
+                <li>
+                    <div class="sub-heading">Named parameters</div>
+                    <p>
+                        Named parameters are optional unless they’re specifically marked as required. When calling a function, you can specify named parameters using <kbd>paramName: value</kbd>. When defining a function, use <kbd>{param1, param2, …}</kbd> to specify named parameters
+                    </p>
+                    <p>
+                        Although named parameters are a kind of optional parameter, you can annotate them with <kbd>@required</kbd> to indicate that the parameter is mandatory — that users must provide a value for the parameter. For example:
+                    </p>
+                    <code>const Scrollbar({Key key, @required Widget child})</code>
+                </li>
+                <li>
+                    <div class="sub-heading">Optional positional parameters</div>
+                    <p>
+                        Wrapping a set of function parameters in <kbd>[]</kbd> marks them as optional positional parameters:
+                    </p>
+                    <code>String say(String from, String msg, [String device]) {
+  var result = '$from says $msg';
+  if (device != null) {
+    result = '$result with a $device';
+  }
+  return result;
+}</code>
+                </li>
+            </ul>
+        </section>
+        <section class="main-section" id="the_main_function">
+            <header>The main() function</header>
+            <p>
+                Every app must have a top-level <kbd>main()</kbd> function, which serves as the entrypoint to the app. The <kbd>main()</kbd> function returns <kbd>void</kbd> and has an optional <kbd>List<String></kbd> parameter for arguments.
+                </p>
+            <p>
+                Here’s an example of the <kbd>main()</kbd> function for a web app:
+            </p>
+            <code>void main() {
+  querySelector('#sample_text_id')
+    ..text = 'Click me!'
+    ..onClick.listen(reverseText);
+}</code>
+            <p>
+                You can use the args library to define and parse command-line arguments.
+            </p>
+        </section>
+        <section class="main-section" id="functions_as_first_class_objects">
+            <header>Functions as first-class objects</header>
+            <p>
+                You can pass a function as a parameter to another function. For example:
+            </p>
+            <code>void printElement(int element) {
+  print(element);
+}
+
+var list = [1, 2, 3];
+
+// Pass printElement as a parameter.
+list.forEach(printElement);
+</code>
+            <p>
+                You can also assign a function to a variable, such as:
+            </p>
+            <code>var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+assert(loudify('hello') == '!!! HELLO !!!');
+</code>
+            <p>
+                This example uses an anonymous function. More about those in the next section.
+            </p>
+        </section>
+        <section class="main-section" id="anonymous_functions">
+            <header>Anonymous functions</header>
+            <p>
+                Most functions are named, such as <kbd>main()</kbd> or <kbd>printElement()</kbd>. You can also create a nameless function called an anonymous function, or sometimes a lambda or closure. You might assign an anonymous function to a variable so that, for example, you can add or remove it from a collection.
+            </p>
+            <p>
+                An anonymous function looks similar to a named function— zero or more parameters, separated by commas and optional type annotations, between parentheses.
+            </p>
+            <p>
+                The code block that follows contains the function’s body:
+            </p>
+            <code>([[Type] param1[, …]]) {
+  codeBlock;
+};</code>
+            <p>
+                The following example defines an anonymous function with an untyped parameter, item. The function, invoked for each item in the list, prints a string that includes the value at the specified index.
+            </p>
+            <code>var list = ['apples', 'bananas', 'oranges'];
+list.forEach((item) {
+  print('${list.indexOf(item)}: $item');
+});</code>
+        </section>
+        <section class="main-section" id="lexical_scope">
+            <header>Lexical scope</header>
+            <p>
+                Dart is a lexically scoped language, which means that the scope of variables is determined statically, simply by the layout of the code. You can “follow the curly braces outwards” to see if a variable is in scope.
+            </p>
+            <p>
+                Here is an example of nested functions with variables at each scope level:
+            </p>
+            <code>bool topLevel = true;
+
+void main() {
+  var insideMain = true;
+
+  void myFunction() {
+    var insideFunction = true;
+
+    void nestedFunction() {
+      var insideNestedFunction = true;
+
+      assert(topLevel);
+      assert(insideMain);
+      assert(insideFunction);
+      assert(insideNestedFunction);
+    }
+  }
+}</code>
+            <p>
+                Notice how <kbd>nestedFunction()</kbd> can use variables from every level, all the way up to the top level.
+            </p>
+        </section>
+        <section class="main-section" id="lexical_closures">
+            <header>Lexical closures</header>
+            <p>
+                A closure is a function object that has access to variables in its lexical scope, even when the function is used outside of its original scope.
+            </p>
+            <p>
+                Functions can close over variables defined in surrounding scopes. In the following example, <kbd>makeAdder()</kbd> captures the variable <kbd>addBy</kbd>. Wherever the returned function goes, it remembers <kbd>addBy</kbd>.
+            </p>
+            <code>/// Returns a function that adds [addBy] to the
+/// function's argument.
+Function makeAdder(int addBy) {
+  return (int i) => addBy + i;
+}
+
+void main() {
+  // Create a function that adds 2.
+  var add2 = makeAdder(2);
+
+  // Create a function that adds 4.
+  var add4 = makeAdder(4);
+
+  assert(add2(3) == 5);
+  assert(add4(3) == 7);
+}</code>
+        </section>
+        <section class="main-section" id="testing_functions_for_equality">
+            <header>Testing functions for equality</header>
+            <p>
+                Here’s an example of testing top-level functions, static methods, and instance methods for equality:
+            </p>
+            <code>void foo() {} // A top-level function
+
+class A {
+  static void bar() {} // A static method
+  void baz() {} // An instance method
+}
+
+void main() {
+  var x;
+
+  // Comparing top-level functions.
+  x = foo;
+  assert(foo == x);
+
+  // Comparing static methods.
+  x = A.bar;
+  assert(A.bar == x);
+
+  // Comparing instance methods.
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
+  var y = w;
+  x = w.baz;
+
+  // These closures refer to the same instance (#2),
+  // so they're equal.
+  assert(y.baz == x);
+
+  // These closures refer to different instances,
+  // so they're unequal.
+  assert(v.baz != w.baz);
+}</code>
+        </section>
+        <section class="main-section" id="return_values">
+            <header>Return values</header>
+            <p>
+                All functions return a value. If no return value is specified, the statement <kbd>return null</kbd>; is implicitly appended to the function body.
+            </p>
+            <code>foo() {}
+
+assert(foo() == null);</code>
+        </section>
+    </main>
 </body>
 </html>
