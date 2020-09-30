@@ -1,0 +1,12 @@
+function destroyer(arr) {
+  let args = [].slice.call(arguments);
+  return arr.filter(cur => {
+    for (let i = 1; i < args.length; i++) {
+      if (cur == args[i]) return false;
+    }
+    return true;
+  });
+
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);

@@ -1,0 +1,13 @@
+function sumPrimes(num) {
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    let flag = 0;
+    for (let j = 2; j <= num; j++) {
+      if(j != 1 && j!= i && i%j == 0) flag = 1;
+    }
+    if(flag == 0) sum += i;
+  }
+  return sum;
+}
+
+sumPrimes(70);

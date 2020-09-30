@@ -1,0 +1,11 @@
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+  let start = str.slice(0,1), end = str.slice(str.length-1);
+  str = str.split('');
+  for (let i = 0, j = alphabet.indexOf(start); i < str.length; i++, j++) {
+    if(str[i] != alphabet[j]) return alphabet[j];
+  }
+  return undefined;
+}
+
+fearNotLetter("abce");

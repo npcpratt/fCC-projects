@@ -1,0 +1,25 @@
+function smallestCommons(arr) {
+  arr.sort((a,b) => a-b);
+  let range = []
+  for (let i = arr[0]; i <= arr[1]; i++) {
+    range.push(i)
+  }
+  let result;
+  let i = range[0];
+  while (i < 9999999) {
+    let flag = 0;
+    for (let j = range[0]; j <= range[range.length-1]; j++) {
+      if (i%j != 0) break;
+      else if (j == range[range.length-1] && i%j == 0) flag = 1;
+    }
+    if(flag == 1) {
+      result = i;
+      break;
+    }
+    i++;
+  }
+  return result;
+}
+
+
+smallestCommons([1,5]);
