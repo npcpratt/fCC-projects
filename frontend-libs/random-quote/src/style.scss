@@ -8,6 +8,10 @@ body {
 
 div#app {
     div#quote-box {
+        width: 500px;
         color: black;
+        i {
+            position: absolute;
+        }
     }
 }

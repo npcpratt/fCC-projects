@@ -7,7 +7,11 @@ body {
 }
 
 div#app div#quote-box {
+  width: 500px;
   color: black;
+}
+div#app div#quote-box i {
+  position: absolute;
 }
 
 /*# sourceMappingURL=style.css.map */

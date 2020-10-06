@@ -10,16 +10,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var e = React.createElement;
 
-// fetch quotes from freeCodeCamp json
-var quotesData = [];
-fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json').then(function (res) {
-    return res.json();
-}).then(function (result) {
-    quotesData = result.quotes;
-});
-
-// get random quote
-
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
@@ -29,41 +19,101 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = {
-            quotes: quotesData.quotes
+            error: null,
+            isLoaded: false,
+            quotes: [],
+            current: Math.floor(Math.random() * 103)
         };
+        _this.getNewQuote = _this.getNewQuote.bind(_this);
         return _this;
     }
 
+    // Fetch quotes from freeCodeCamp's quotes.json file
+
+
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json').then(function (res) {
+                return res.json();
+            }).then(function (result) {
+                _this2.setState({
+                    isLoaded: true,
+                    quotes: result.quotes
+                }), function (error) {
+                    _this2.setState({
+                        isLoaded: true,
+                        error: error
+                    });
+                };
+            });
+        }
+
+        // Get a new random index for passing to the quotes array
+
+    }, {
+        key: 'getNewQuote',
+        value: function getNewQuote(state) {
+            this.setState({ current: Math.floor(Math.random() * 103) });
+
+            // If the random index is same as the previous one, call the function again (recursive)
+            if (state.current == this.state.current) this.getNewQuote(this.state);
+        }
+    }, {
         key: 'render',
         value: function render() {
-            console.log(this.state.quotes);
-            return React.createElement(
-                'div',
-                { id: 'quote-box' },
-                React.createElement('i', { className: 'fas fa-quote-left' }),
-                React.createElement(
+            var _state = this.state,
+                error = _state.error,
+                isLoaded = _state.isLoaded,
+                quotes = _state.quotes,
+                current = _state.current;
+
+
+            if (error) {
+                return React.createElement(
                     'div',
-                    { id: 'text' },
-                    'asdf'
-                ),
-                React.createElement(
+                    null,
+                    'Error: ',
+                    error.message
+                );
+            } else if (!isLoaded) {
+                return React.createElement(
                     'div',
-                    { id: 'author' },
-                    'asdf'
-                ),
-                React.createElement(
-                    'button',
-                    { id: 'new-quote' },
-                    'New Quote'
-                ),
-                React.createElement(
-                    'a',
-                    { href: 'twitter.com', id: 'tweet-quote' },
-                    React.createElement('i', { 'class': 'fab fa-twitter' }),
-                    ' Tweet'
-                )
-            );
+                    null,
+                    'Loading...'
+                );
+            } else {
+                return React.createElement(
+                    'div',
+                    { id: 'quote-box' },
+                    React.createElement('i', { className: 'fas fa-quote-left' }),
+                    React.createElement(
+                        'div',
+                        { id: 'text' },
+                        quotes[current].quote
+                    ),
+                    React.createElement(
+                        'div',
+                        { id: 'author' },
+                        '- ',
+                        quotes[current].author
+                    ),
+                    React.createElement(
+                        'button',
+                        { id: 'new-quote', onClick: this.getNewQuote },
+                        'New Quote'
+                    ),
+                    React.createElement(
+                        'a',
+                        { href: 'https://twitter.com/intent/tweet?text=' + quotes[current].quote + ' - ' + quotes[current].author + '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote',
+                            target: '_blank', id: 'tweet-quote' },
+                        React.createElement('i', { 'class': 'fab fa-twitter' }),
+                        ' Tweet'
+                    )
+                );
+            }
         }
     }]);
 
