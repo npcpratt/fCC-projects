@@ -85,6 +85,9 @@ var App = function (_React$Component) {
                     'Loading...'
                 );
             } else {
+                var quote = quotes[current].quote;
+                var author = quotes[current].author;
+                var tweetText = encodeURIComponent(quote + ' - ' + author);
                 return React.createElement(
                     'div',
                     { id: 'quote-box' },
@@ -92,13 +95,13 @@ var App = function (_React$Component) {
                     React.createElement(
                         'div',
                         { id: 'text' },
-                        quotes[current].quote
+                        quote
                     ),
                     React.createElement(
                         'div',
                         { id: 'author' },
                         '- ',
-                        quotes[current].author
+                        author
                     ),
                     React.createElement(
                         'button',
@@ -107,7 +110,7 @@ var App = function (_React$Component) {
                     ),
                     React.createElement(
                         'a',
-                        { href: 'https://twitter.com/intent/tweet?text=' + quotes[current].quote + ' - ' + quotes[current].author + '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote',
+                        { href: 'https://twitter.com/intent/tweet?text=' + tweetText + '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote',
                             target: '_blank', id: 'tweet-quote' },
                         React.createElement('i', { 'class': 'fab fa-twitter' }),
                         ' Tweet'

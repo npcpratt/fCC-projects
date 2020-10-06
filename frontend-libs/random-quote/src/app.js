@@ -43,21 +43,23 @@ class App extends React.Component {
     render() {
         
         const {error, isLoaded, quotes, current} = this.state;
-
+        
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
+            const quote = quotes[current].quote
+            const author = quotes[current].author
+            const tweetText = encodeURIComponent(quote + ' - ' + author);
             return (
                 <div id="quote-box">
                     <i className="fas fa-quote-left"></i>
-                    <div id="text">{quotes[current].quote}</div>
-                    <div id="author">- {quotes[current].author}</div>
+                    <div id="text">{quote}</div>
+                    <div id="author">- {author}</div>
                     <button id="new-quote" onClick={this.getNewQuote}>New Quote</button>
-                    <a href={'https://twitter.com/intent/tweet?text='
-                            + quotes[current].quote + ' - ' + quotes[current].author
-                            + '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote'} 
+                    <a href={'https://twitter.com/intent/tweet?text=' + tweetText + 
+                             '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote'}
                        target="_blank" id="tweet-quote"><i class="fab fa-twitter"></i> Tweet</a>
                 </div>
             );
