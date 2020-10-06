@@ -4,14 +4,86 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #263238;
+  color: white;
 }
 
 div#app div#quote-box {
-  width: 500px;
-  color: black;
+  display: grid;
+  grid-template-columns: 1 1;
+  width: 80vw;
+  max-width: 500px;
+  padding: 30px;
+  font-size: 20px;
+  font-family: sans-serif;
+  background: #37474f;
+  position: relative;
+  border-radius: 30px;
 }
-div#app div#quote-box i {
+div#app div#quote-box i.fa-quote-left {
   position: absolute;
+  top: -20px;
+  left: -10px;
+  font-size: 60px;
+  color: #607d8b;
+  z-index: 1;
+}
+div#app div#quote-box div#text {
+  margin-top: 10px;
+  font-size: 27px;
+  z-index: 2;
+  padding: 0 25px 0 25px;
+  grid-column: span 2;
+}
+div#app div#quote-box div#author {
+  grid-column: span 2;
+  justify-self: end;
+  padding: 30px;
+}
+div#app div#quote-box button {
+  border: none;
+  border-radius: 18px;
+  font-size: 20px;
+  padding: 20px;
+  color: white;
+  background: #607d8b;
+  transition: 0.1s;
+  cursor: pointer;
+}
+div#app div#quote-box button:hover {
+  background: #78909c;
+  transition: 0.1s;
+}
+div#app div#quote-box a#tweet-quote {
+  padding: 10px;
+  font-size: 15px;
+  justify-self: end;
+  align-self: end;
+  width: 30px;
+  overflow: hidden;
+  display: flex;
+  color: white;
+  background: #31a9f3;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.1s;
+}
+div#app div#quote-box a#tweet-quote:hover {
+  background: #32b1ff;
+  width: 90px;
+}
+div#app div#quote-box a#tweet-quote:hover span {
+  opacity: 1;
+}
+div#app div#quote-box a#tweet-quote i {
+  font-size: 20px;
+  margin: 5px;
+}
+div#app div#quote-box a#tweet-quote span {
+  padding: 6px;
+  margin-left: 5px;
+  opacity: 0;
+  transition: all 0.1s;
 }
 
 /*# sourceMappingURL=style.css.map */

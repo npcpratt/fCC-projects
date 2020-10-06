@@ -56,11 +56,11 @@ class App extends React.Component {
                 <div id="quote-box">
                     <i className="fas fa-quote-left"></i>
                     <div id="text">{quote}</div>
-                    <div id="author">- {author}</div>
+                    <div id="author"> - {author}</div>
                     <button id="new-quote" onClick={this.getNewQuote}>New Quote</button>
                     <a href={'https://twitter.com/intent/tweet?text=' + tweetText + 
                              '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote'}
-                       target="_blank" id="tweet-quote"><i class="fab fa-twitter"></i> Tweet</a>
+                       target="_blank" id="tweet-quote"><i class="fab fa-twitter"></i><span>Tweet</span></a>
                 </div>
             );
         }

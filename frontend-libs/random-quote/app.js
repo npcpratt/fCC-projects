@@ -100,7 +100,7 @@ var App = function (_React$Component) {
                     React.createElement(
                         'div',
                         { id: 'author' },
-                        '- ',
+                        ' - ',
                         author
                     ),
                     React.createElement(
@@ -113,7 +113,11 @@ var App = function (_React$Component) {
                         { href: 'https://twitter.com/intent/tweet?text=' + tweetText + '&url=https://pratvar.com/fCC-projects/frontend-libs/random-quote',
                             target: '_blank', id: 'tweet-quote' },
                         React.createElement('i', { 'class': 'fab fa-twitter' }),
-                        ' Tweet'
+                        React.createElement(
+                            'span',
+                            null,
+                            'Tweet'
+                        )
                     )
                 );
             }
