@@ -2,37 +2,109 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cfd8dc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #90a4ae;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0bec5;
+}
+
 body {
-  background: #242424;
-  color: white;
+  background: #212121;
   font-family: sans-serif;
   padding: 0;
   margin: 0;
 }
 body div#app {
   min-height: 100vh;
-  padding: 20px;
+  padding: 10px;
 }
 body div#app .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  height: calc(100vh - 40px);
+  grid-gap: 10px;
+  height: calc(100vh - 20px);
 }
-body div#app .container textarea#editor {
-  background: black;
+body div#app .container .editor {
+  width: 100%;
+}
+body div#app .container .editor div#titlebar {
+  font-size: 15px;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+  background: #616161;
+  color: white;
+}
+body div#app .container .editor textarea#editor {
+  border-radius: 0 0 10px 10px;
+  background: #424242;
   color: white;
   overflow: auto;
   padding: 20px;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 37.6px);
+  border: none;
   resize: none;
 }
+body div#app .container .editor ::-webkit-scrollbar-track {
+  background: #9e9e9e;
+  border-radius: 10px;
+}
+body div#app .container .editor ::-webkit-scrollbar-thumb {
+  background: #616161;
+  border-radius: 10px;
+}
+body div#app .container .editor ::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
 body div#app .container div#preview {
-  background: #2d2d33;
+  border-radius: 10px;
+  background: #eceff1;
   padding: 20px;
-  overflow: auto;
   height: 100%;
+  width: 50vw;
+  overflow: auto;
+  word-wrap: break-word;
+}
+body code {
+  padding: 1px;
+  color: white;
+  background: #546e7a;
+}
+body pre {
+  border-radius: 5px;
+  color: white;
+  background: #546e7a;
+  padding: 10px;
+}
+body blockquote {
+  color: #263238;
+  padding-left: 7px;
+  border-left: 3px solid #263238;
+}
+
+@media only screen and (max-width: 1023px) {
+  body div#app .container {
+    display: flex;
+    flex-direction: column;
+  }
+  body div#app .container .editor {
+    height: 50vh;
+  }
+  body div#app .container div#preview {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

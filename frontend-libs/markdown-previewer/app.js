@@ -12,6 +12,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var e = React.createElement;
 
+var placeholder = "# Minimal Markdown Previewer\n----------------------------\n\n## Made with React | [View source on GitHub](https://github.com/pratvar/fCC-projects/tree/master/frontend-libs/markdown-previewer/src)\nThis is `inline code`\n\n```\n//this is a code block\n\nconst helloWorld = () => {\n  console.log('Hello World')\n}\n\n```\n\nThis is a **list**:\n- list item\n - indented list item\n - indented list item\n   - indentation level 2\n   - another one\n- we the best music\n- another one\n\n\n![React Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/200px-React-icon.svg.png) \n\n> This is an image\n\nThat's a blockquote ^\n";
+
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
@@ -21,27 +23,36 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = {
-            input: ''
+            input: placeholder
         };
         _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
     _createClass(App, [{
-        key: 'handleChange',
+        key: "handleChange",
         value: function handleChange(e) {
             this.setState({
                 input: e.target.value
             });
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
-                { className: 'container' },
-                React.createElement('textarea', { id: 'editor', value: this.state.input, onChange: this.handleChange }),
-                React.createElement('div', { id: 'preview', dangerouslySetInnerHTML: { __html: marked(this.state.input) } })
+                "div",
+                { className: "container" },
+                React.createElement(
+                    "div",
+                    { className: "editor" },
+                    React.createElement(
+                        "div",
+                        { id: "titlebar" },
+                        "Editor"
+                    ),
+                    React.createElement("textarea", { id: "editor", value: this.state.input, onChange: this.handleChange })
+                ),
+                React.createElement("div", { id: "preview", dangerouslySetInnerHTML: { __html: marked(this.state.input) } })
             );
         }
     }]);
