@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(36, 36, 36);
+    color: white;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    
+    div#app {
+        min-height: 100vh;
+        padding: 20px;
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+
+            textarea#editor {
+                background: black;
+                color: white;
+                overflow: auto;
+                padding: 20px;
+                width: 100%;
+            }
+
+            div#preview {
+                background: rgb(45, 45, 51);
+                padding: 20px;
+            }
+        }
+    }
+}
