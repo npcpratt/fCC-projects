@@ -1,0 +1,30 @@
+body {
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+body div#app div#drum-machine {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+body div#app div#drum-machine div#display {
+  grid-column: span 3;
+}
+body div#app div#drum-machine div.drum-pad {
+  background: gray;
+  padding: 40px;
+  cursor: pointer;
+}
+body div#app div#drum-machine div#sliderContainer {
+  display: flex;
+  grid-column: span 3;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */
