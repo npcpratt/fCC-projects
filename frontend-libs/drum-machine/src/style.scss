@@ -1,5 +1,5 @@
 body {
-    background: black;
+    background: #B3E5FC;
     color: white;
     display: flex;
     justify-content: center;
@@ -7,23 +7,37 @@ body {
     height: 100vh;
     margin: 0;
     font-family: sans-serif;
+    cursor: default;
     div#app {
         div#drum-machine {
             display: grid;
             grid-template-columns: auto auto auto;
-            grid-gap: 10px;
+            grid-gap: 15px;
+            background: #0277BD;
+            padding: 20px;
+            border-radius: 30px;
             div#display {
                 grid-column: span 3;
+                background: #0288D1;
+                padding: 10px;
+                text-align: center;
+                border-radius: 10px;
+                margin: 10px;
             }
             div.drum-pad {
-                background: gray;
+                background: #01579B;
                 padding: 40px;
+                border-radius: 20px;
                 cursor: pointer;
             }
             div#sliderContainer {
                 display: flex;
                 grid-column: span 3;
                 justify-content: center;
+                background: #01579B;
+                margin: 10px;
+                padding: 10px;
+                border-radius: 10px;
             }
         }
     }

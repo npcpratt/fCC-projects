@@ -31,16 +31,26 @@ var App = function (_React$Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			document.addEventListener('keypress', this.handleKeyPress);
+			document.getElementById('display').innerHTML = '-';
 		}
 	}, {
 		key: 'playSound',
 		value: function playSound(key) {
+			// play sound
 			var sound = document.getElementById(key.keyTrigger);
-			var display = document.querySelector('#display');
-			sound.currentTime = 0;
 			sound.volume = this.state.volume / 10;
+			sound.currentTime = 0;
 			sound.play();
-			display.innerHTML = key.id.replace(/-/g, ' ');
+
+			// display key name
+			document.querySelector('#display').innerHTML = key.id.replace(/-/g, ' ');
+
+			// keypress animation
+			var div = document.getElementById(key.id);
+			div.style.background = '#0288D1';
+			setTimeout(function () {
+				div.style.background = '#01579B';
+			}, 200);
 		}
 	}, {
 		key: 'volumeControl',
@@ -67,13 +77,13 @@ var App = function (_React$Component) {
 				'div',
 				{ id: 'drum-machine' },
 				React.createElement('div', { id: 'display' }),
-				keys.map(function (key, i, arr) {
+				keys.map(function (key) {
 					return React.createElement(
 						'div',
 						{ className: 'drum-pad', id: key.id, onClick: function onClick() {
 								return _this2.playSound(key);
 							} },
-						React.createElement('audio', { id: key.keyTrigger, src: key.url }),
+						React.createElement('audio', { className: 'clip', id: key.keyTrigger, src: key.url }),
 						key.keyTrigger
 					);
 				}),

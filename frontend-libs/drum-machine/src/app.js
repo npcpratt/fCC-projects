@@ -16,7 +16,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            volume: 5
+			volume: 5
 		}
 		this.playSound = this.playSound.bind(this);
 		this.volumeControl = this.volumeControl.bind(this);
@@ -24,16 +24,24 @@ class App extends React.Component {
 	}
 	
 	componentDidMount() {
-		document.addEventListener('keypress', this.handleKeyPress)
+		document.addEventListener('keypress', this.handleKeyPress);
+		document.getElementById('display').innerHTML = '-';
 	}
 
 	playSound(key) {
+		// play sound
 		const sound = document.getElementById(key.keyTrigger);
-		const display = document.querySelector('#display');
-		sound.currentTime = 0;
 		sound.volume = this.state.volume/10;
+		sound.currentTime = 0;
 		sound.play();
-		display.innerHTML = key.id.replace(/-/g, ' ');
+
+		// display key name
+		document.querySelector('#display').innerHTML = key.id.replace(/-/g, ' ');
+		
+		// keypress animation
+		const div = document.getElementById(key.id);
+		div.style.background = '#0288D1';
+		setTimeout(() => {div.style.background = '#01579B'}, 200);
 	}
 	volumeControl(e) {
 		this.setState({
@@ -48,15 +56,14 @@ class App extends React.Component {
 		}
 	}
 
-
     render() {
         return (
             <div id="drum-machine">
 				<div id="display"></div>
-				{keys.map((key, i, arr) => {
+				{keys.map((key) => {
 					return (
 						<div className="drum-pad" id={key.id} onClick={() => this.playSound(key)}>
-							<audio id={key.keyTrigger} src={key.url}></audio>{key.keyTrigger}
+							<audio className="clip" id={key.keyTrigger} src={key.url}></audio>{key.keyTrigger}
 						</div>
 					)
 				})}
