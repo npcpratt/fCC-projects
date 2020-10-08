@@ -23,7 +23,15 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            return React.createElement('div', { id: 'calculator' });
+            return React.createElement(
+                'div',
+                { id: 'calculator' },
+                React.createElement(
+                    'h1',
+                    null,
+                    'henlo'
+                )
+            );
         }
     }]);
 

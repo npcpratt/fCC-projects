@@ -10,7 +10,7 @@ class App extends React.Component {
     render() {
         return (
             <div id="calculator">
-
+                <h1>henlo</h1>
             </div>
         )
     }
