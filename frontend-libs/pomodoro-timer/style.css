@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
+body {
+  background: gray;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+body div#root {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body div#root div#container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas: "a c" "b c";
+  cursor: default;
+  background: #616161;
+  padding: 30px;
+  border-radius: 20px;
+}
+body div#root div#container .duration {
+  border-radius: 10px;
+}
+body div#root div#container .duration .label {
+  text-align: center;
+  background: #252525;
+  color: white;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+}
+body div#root div#container .duration .length-setter {
+  padding: 10px;
+  font-size: 18px;
+  background: #e4e3e3;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0 0 10px 10px;
+}
+body div#root div#container .duration .length-setter .length {
+  background: #cfcfcf;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+body div#root div#container div#timer {
+  grid-area: c;
+  background: #525252;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px #272727;
+}
+body div#root div#container div#timer div#time-left {
+  font-size: 40px;
+}
+body div#root div#container div#timer button {
+  margin: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

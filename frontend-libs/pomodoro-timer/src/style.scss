@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Material+Icons');
+
+body {
+    background: gray;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    div#root {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div#container {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-areas: "a c" "b c";
+            cursor: default;
+            background: rgb(97, 97, 97);
+            padding: 30px;
+            border-radius: 20px;
+            .duration {
+                border-radius: 10px;
+                //box-shadow: 0 1px 3px rgb(39, 39, 39);
+                .label {
+                    text-align: center;
+                    background: rgb(37, 37, 37);
+                    color: white;
+                    padding: 15px;
+                    border-radius: 10px 10px 0 0;
+                }
+                .length-setter {
+                    padding: 10px;
+                    font-size: 18px;
+                    background: rgb(228, 227, 227);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    border-radius: 0 0 10px 10px;
+                    .length {
+                        background: rgb(207, 207, 207);
+                        padding: 5px 15px;
+                        border-radius: 5px;
+                    }
+                }
+            }
+            div#timer {
+                grid-area: c;
+                background: rgb(82, 82, 82);
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 1px 3px rgb(39, 39, 39);
+                div#time-left {
+                    font-size: 40px;
+                }
+                button {
+                    margin: 10px;
+                }
+            }
+        }
+    }
+}
