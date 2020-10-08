@@ -1,11 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
 body {
   margin: 0;
+  font-family: lato, sans-serif;
+  font-size: 25px;
+  background: #5b739a;
 }
 body div#root {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+body div#root div#calculator {
+  padding: 15px;
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: auto auto;
+  background: #202124;
+  color: white;
+  box-shadow: 0 10px 50px #181818;
+}
+body div#root div#calculator div#displayContainer {
+  cursor: default;
+  grid-column: span 2;
+  background: #2d3033;
+  box-shadow: 0 2px 3px #181818;
+  z-index: 2;
+  padding: 20px;
+  text-align: right;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 294.5px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+}
+body div#root div#calculator div#displayContainer div#display {
+  padding-bottom: 10px;
+}
+body div#root div#calculator div#displayContainer div#result {
+  color: gray;
+  font-size: 0.85em;
+}
+body div#root div#calculator button {
+  cursor: pointer;
+  font-family: lato, sans-serif;
+  font-size: 25px;
+  color: white;
+  padding: 25px 30px;
+  margin: 5px 0;
+  width: 100%;
+}
+body div#root div#calculator i {
+  font-size: 15px;
+}
+body div#root div#calculator div#numbers {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+body div#root div#calculator div#operators {
+  border-left: 1px solid #2f3031;
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+  justify-items: center;
+}
+body div#root div#calculator div#operators button {
+  height: 100%;
+  color: #8ab4f8;
+  padding: 0 25px;
+  text-align: center;
+}
+body div#root div#calculator div#operators button#clear {
+  padding: 0px;
+  margin: -15px 3px;
+  width: auto;
+  height: 65px;
+  color: white;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */
