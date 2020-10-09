@@ -1,0 +1,189 @@
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Open+Sans|Lato";
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: lato, sans-serif;
+}
+nav {
+    z-index: 5;
+    font-weight: bold;
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 15px;
+    right: 0;
+    margin: 15px 15px 0 0;
+}
+nav > a {
+    text-align: center;
+    padding: 15px 20px 15px 20px;
+    text-decoration: none;
+    color: #212121;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 1px 2px rgb(53, 53, 53);
+    transition: 0.1s;
+    position: relative;
+    bottom: 0;
+}
+nav > a:hover {
+    transition: 0.1s;
+    background-color: #eeeeee;
+    position: relative;
+    bottom: 1px;
+    box-shadow: 0 2px 3px #212121;
+}
+#welcome-section {
+    height: 100vh;
+    color: white;
+    background-color: #212121;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+#welcome-section img {
+    position: relative;
+    top: 60px;
+    border-radius: 50%;
+    max-width: 450px;
+    justify-self: center;
+}
+#welcome-section i {
+    position: relative;
+    animation: updown 1s infinite;
+}
+@keyframes updown {
+    0% {bottom: 0px;}
+    50% {bottom: 10px;}
+    100% {bottom: 0px;}
+}
+#desc {
+    font-size: 30px;
+    font-weight: lighter;
+}
+#welcome-section i {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+#projects {    
+    display: grid;
+    grid-template-columns: auto;
+    background-color: #424242;
+    color: white;
+    padding: 20px 0 20px 0;
+}
+#projects h2 > a {
+    color: white;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+}
+.flex a {
+    margin: 20px;
+}
+.project-tile {
+    background-color: rgb(2, 0, 32);
+    height: 400px;
+    width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.project-tile div {
+    z-index: 2;
+    position: relative;
+    bottom: 0;
+    color: black;
+    background-color: white;
+    width: 500px;
+}
+.project-tile img {
+    z-index: 1;
+    position: relative;
+    max-width: 500px;
+}
+#html-css {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 0 20px 0 20px;
+}
+
+#contact {
+    color: white;
+    background-color: #212121;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+#contact h2 {
+    justify-self: center;
+    font-size: 2rem;
+}
+.link {
+    font-size: 1.5rem;
+}
+.link i {
+    font-size: 3rem;
+    position: relative;
+    top: 10px; /* reason for [bottom: 10px;] in #links */
+    margin-right: 10px;
+}
+#links {
+    position: relative;
+    bottom: 10px;
+}
+.link a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 30px;
+    color: white;
+    transition: 0.1s;
+}
+.link a:hover {
+    transition: 0.1s;
+}
+#github:hover {
+    color: #6cc644;
+}
+
+#twitter:hover {
+    color: rgb(29, 161, 242);
+}
+#linkedin:hover {
+    color: #0274b3;
+}
+#email:hover {
+    color: #d94a3e
+}
+
+
+@media only screen and (max-width: 1070px) {
+    #welcome-section {
+        display: flex;
+        flex-direction: column;
+    }
+    #welcome-section img {
+        position: relative;
+        top: 0px;
+        border-radius: 50%;
+        max-width: 400px;
+        margin: 40px;
+    }
+    #contact {
+        grid-template-columns: auto;
+        justify-content: center;
+    }
+    #contact h2 {
+        align-self: end;
+    }
+    #links {
+        margin-bottom: 20px;
+    }
+}
