@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Material+Icons');
 
 body {
-    background: gray;
+    background: #009688;
     padding: 0;
     margin: 0;
     font-family: sans-serif;
@@ -15,7 +15,7 @@ body {
             grid-gap: 20px;
             grid-template-areas: "a c" "b c";
             cursor: default;
-            background: rgb(97, 97, 97);
+            background: #00897b;
             padding: 30px;
             border-radius: 20px;
             .duration {
@@ -23,7 +23,7 @@ body {
                 //box-shadow: 0 1px 3px rgb(39, 39, 39);
                 .label {
                     text-align: center;
-                    background: rgb(37, 37, 37);
+                    background: #00796b;
                     color: white;
                     padding: 15px;
                     font-size: 15px;
@@ -32,36 +32,60 @@ body {
                 .length-setter {
                     padding: 10px;
                     font-size: 18px;
-                    background: rgb(228, 227, 227);
+                    background: #e0f2f1;
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
                     border-radius: 0 0 10px 10px;
                     .length {
-                        background: rgb(207, 207, 207);
+                        background: #b2dfdb;
+                        color: #002e26;
                         padding: 5px 15px;
                         border-radius: 5px;
                     }
                 }
             }
+            div#break {
+                align-self: end;
+            }
             div#timer {
-                font-size: 25px;
+                background: #e0f2f1;
+                box-shadow: 0 1px 3px #004d40;
+                padding: 20px;
                 grid-area: c;
-                background: rgb(82, 82, 82);
-                color: white;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
                 align-items: center;
-                border-radius: 10px;
-                padding: 20px;
-                box-shadow: 0 1px 3px rgb(39, 39, 39);
+                justify-content: space-around;
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+                font-size: 25px;
+                div#timer-label {
+                    color: #002e26;
+                }
                 div#time-left {
                     font-size: 40px;
+                    padding: 10px;
+                    width: 150px;
+                    text-align: center;
+                    border-radius: 20px;
+                    background: #b2dfdb;
+                    color: #015346;
                 }
                 button {
                     margin: 10px;
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        div#root {
+            div#container {
+                grid-template-areas: "a b" "c c";
             }
         }
     }

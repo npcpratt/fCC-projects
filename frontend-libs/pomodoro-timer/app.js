@@ -65,7 +65,6 @@ var App = function (_React$Component) {
     }, {
         key: 'timerFunc',
         value: function timerFunc() {
-
             // switch to break when session completes and vice versa, also play beep
             if (this.state.minLeft == '00' && this.state.secLeft == '00') {
                 switch (this.state.current) {
@@ -84,7 +83,6 @@ var App = function (_React$Component) {
                 beep.currentTime = 0;
                 beep.play();
             }
-
             // countdown
             if (this.state.secLeft == '00') this.setState({
                 minLeft: leadingZero(parseInt(this.state.minLeft) - 1),
@@ -96,7 +94,7 @@ var App = function (_React$Component) {
     }, {
         key: 'start',
         value: function start() {
-            timer = accurateInterval(100, this.timerFunc);
+            timer = accurateInterval(1000, this.timerFunc);
             this.setState({ timerActive: true });
         }
     }, {
@@ -239,11 +237,11 @@ var App = function (_React$Component) {
                         ),
                         React.createElement(
                             Fab,
-                            { size: 'medium', variant: 'outlined', id: 'reset', onClick: this.reset },
+                            { variant: 'outlined', id: 'reset', onClick: this.reset },
                             React.createElement(
                                 'i',
                                 { 'class': 'material-icons' },
-                                'refresh'
+                                'restore'
                             )
                         )
                     ),

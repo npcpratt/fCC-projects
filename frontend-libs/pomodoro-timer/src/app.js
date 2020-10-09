@@ -46,7 +46,6 @@ class App extends React.Component {
     }
 
     timerFunc() {
-
         // switch to break when session completes and vice versa, also play beep
         if(this.state.minLeft == '00' && this.state.secLeft == '00') {
             switch(this.state.current) {
@@ -63,7 +62,6 @@ class App extends React.Component {
             beep.currentTime = 0;
             beep.play();
         }
-
         // countdown
         if(this.state.secLeft == '00') 
             this.setState({
@@ -75,7 +73,7 @@ class App extends React.Component {
         });
     }
     start() {
-        timer = accurateInterval(100, this.timerFunc);
+        timer = accurateInterval(1000, this.timerFunc);
         this.setState({timerActive: true});
     }
     stop() {
@@ -130,7 +128,7 @@ class App extends React.Component {
                         <Fab variant="contained" color="primary" id="start-stop" onClick={!timerActive ? this.start : this.stop}>
                             {!timerActive ? <i class="material-icons">play_arrow</i> : <i class="material-icons">pause</i>}
                         </Fab>
-                        <Fab size="medium" variant="outlined" id="reset" onClick={this.reset}><i class="material-icons">refresh</i></Fab>
+                        <Fab variant="outlined" id="reset" onClick={this.reset}><i class="material-icons">restore</i></Fab>
                     </div>
                     <audio id="beep" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"></audio>
                 </div>
