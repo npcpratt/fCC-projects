@@ -11,7 +11,8 @@ var _MaterialUI = MaterialUI,
     Button = _MaterialUI.Button,
     Fab = _MaterialUI.Fab;
 
-import 'use strict';
+
+'use strict';
 
 var timer = null;
 var leadingZero = function leadingZero(num) {
