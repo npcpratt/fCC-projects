@@ -28,6 +28,7 @@ body div#root div#container .duration .label {
   background: #252525;
   color: white;
   padding: 15px;
+  font-size: 15px;
   border-radius: 10px 10px 0 0;
 }
 body div#root div#container .duration .length-setter {
@@ -45,6 +46,7 @@ body div#root div#container .duration .length-setter .length {
   border-radius: 5px;
 }
 body div#root div#container div#timer {
+  font-size: 25px;
   grid-area: c;
   background: #525252;
   color: white;

@@ -8,12 +8,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var _MaterialUI = MaterialUI,
     IconButton = _MaterialUI.IconButton,
-    Button = _MaterialUI.Button;
+    Button = _MaterialUI.Button,
+    Fab = _MaterialUI.Fab;
 
+import 'use strict';
 
-'use strict';
-
-var timerArr = [];
+var timer = null;
+var leadingZero = function leadingZero(num) {
+    if (num < 10) return '0' + num;
+    return num;
+};
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -26,14 +30,16 @@ var App = function (_React$Component) {
         _this.state = {
             breakLength: 5,
             sessionLength: 25,
-            initial: true,
+            timerActive: false,
             current: 'Session',
-            timeLeft: '25:00',
-            timer: null
+            minLeft: '25',
+            secLeft: '00'
         };
         _this.setLength = _this.setLength.bind(_this);
         _this.start = _this.start.bind(_this);
+        _this.stop = _this.stop.bind(_this);
         _this.reset = _this.reset.bind(_this);
+        _this.timerFunc = _this.timerFunc.bind(_this);
         return _this;
     }
 
@@ -42,40 +48,82 @@ var App = function (_React$Component) {
         value: function setLength(name, value) {
             switch (name) {
                 case 'break':
-                    this.state.breakLength == 1 && value == -1 || this.state.breakLength == 60 && value == 1 ? null : this.setState({ breakLength: this.state.breakLength + value });break;
+                    if (this.state.breakLength == 1 && value == -1 || this.state.breakLength == 60 && value == 1) break;else {
+                        this.setState({ breakLength: this.state.breakLength + value });
+                        break;
+                    }
                 case 'session':
-                    this.state.sessionLength == 1 && value == -1 || this.state.sessionLength == 60 && value == 1 ? null : this.setState({ sessionLength: this.state.sessionLength + value });
+                    if (this.state.sessionLength == 1 && value == -1 || this.state.sessionLength == 60 && value == 1) break;else {
+                        this.setState({
+                            sessionLength: this.state.sessionLength + value,
+                            minLeft: leadingZero(parseInt(this.state.minLeft) + value)
+                        });
+                    }
             }
+        }
+    }, {
+        key: 'timerFunc',
+        value: function timerFunc() {
+
+            // switch to break when session completes and vice versa, also play beep
+            if (this.state.minLeft == '00' && this.state.secLeft == '00') {
+                switch (this.state.current) {
+                    case 'Session':
+                        this.setState({
+                            current: 'Break',
+                            minLeft: this.state.breakLength
+                        });break;
+                    case 'Break':
+                        this.setState({
+                            current: 'Session',
+                            minLeft: this.state.sessionLength
+                        });
+                }
+                var beep = document.querySelector("#beep");
+                beep.currentTime = 0;
+                beep.play();
+            }
+
+            // countdown
+            if (this.state.secLeft == '00') this.setState({
+                minLeft: leadingZero(parseInt(this.state.minLeft) - 1),
+                secLeft: '59'
+            });else this.setState({
+                secLeft: leadingZero(parseInt(this.state.secLeft) - 1)
+            });
         }
     }, {
         key: 'start',
         value: function start() {
-            var _this2 = this;
-
-            this.setState({
-                timer: accurateInterval(1000, function () {
-                    timerArr = _this2.state.timeLeft.split(':');
-                    timerArr[1] == '00' ? _this2.setState({ timeLeft: ''.concat(timerArr[0] - 1 + ':59') }) : _this2.setState({ timeLeft: ''.concat(timerArr[0] + ':' + timerArr[1] - 1) });
-                })
-            });
+            timer = accurateInterval(100, this.timerFunc);
+            this.setState({ timerActive: true });
+        }
+    }, {
+        key: 'stop',
+        value: function stop() {
+            timer.cancel();
+            this.setState({ timerActive: false });
         }
     }, {
         key: 'reset',
         value: function reset() {
+            if (this.state.timerActive) timer.cancel();
             this.setState({
-                timer: null,
                 breakLength: 5,
                 sessionLength: 25,
-                initial: true,
+                timerActive: false,
                 current: 'Session',
-                timeLeft: '25:00'
+                minLeft: '25',
+                secLeft: '00'
             });
+            document.querySelector('#beep').pause();
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this2 = this;
 
+            var timerActive = this.state.timerActive;
             return React.createElement(
                 'div',
                 { id: 'container' },
@@ -93,7 +141,7 @@ var App = function (_React$Component) {
                         React.createElement(
                             IconButton,
                             { onClick: function onClick() {
-                                    _this3.setLength('break', -1);
+                                    _this2.setLength('break', -1);
                                 }, id: 'break-decrement' },
                             React.createElement(
                                 'i',
@@ -109,7 +157,7 @@ var App = function (_React$Component) {
                         React.createElement(
                             IconButton,
                             { onClick: function onClick() {
-                                    _this3.setLength('break', 1);
+                                    _this2.setLength('break', 1);
                                 }, id: 'break-increment' },
                             React.createElement(
                                 'i',
@@ -133,7 +181,7 @@ var App = function (_React$Component) {
                         React.createElement(
                             IconButton,
                             { onClick: function onClick() {
-                                    _this3.setLength('session', -1);
+                                    _this2.setLength('session', -1);
                                 }, id: 'session-decrement' },
                             React.createElement(
                                 'i',
@@ -149,7 +197,7 @@ var App = function (_React$Component) {
                         React.createElement(
                             IconButton,
                             { onClick: function onClick() {
-                                    _this3.setLength('session', 1);
+                                    _this2.setLength('session', 1);
                                 }, id: 'session-increment' },
                             React.createElement(
                                 'i',
@@ -170,24 +218,32 @@ var App = function (_React$Component) {
                     React.createElement(
                         'div',
                         { id: 'time-left' },
-                        this.state.timeLeft
+                        this.state.minLeft + ':' + this.state.secLeft
                     ),
                     React.createElement(
                         'div',
                         { id: 'timer-controls' },
                         React.createElement(
-                            Button,
-                            { variant: 'contained', color: 'primary', id: 'start-stop', onClick: this.start },
-                            React.createElement(
+                            Fab,
+                            { variant: 'contained', color: 'primary', id: 'start-stop', onClick: !timerActive ? this.start : this.stop },
+                            !timerActive ? React.createElement(
                                 'i',
                                 { 'class': 'material-icons' },
                                 'play_arrow'
+                            ) : React.createElement(
+                                'i',
+                                { 'class': 'material-icons' },
+                                'pause'
                             )
                         ),
                         React.createElement(
-                            Button,
-                            { variant: 'outlined', id: 'reset', onClick: this.reset },
-                            'Reset'
+                            Fab,
+                            { size: 'medium', variant: 'outlined', id: 'reset', onClick: this.reset },
+                            React.createElement(
+                                'i',
+                                { 'class': 'material-icons' },
+                                'refresh'
+                            )
                         )
                     ),
                     React.createElement('audio', { id: 'beep', src: 'https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav' })

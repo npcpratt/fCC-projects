@@ -26,6 +26,7 @@ body {
                     background: rgb(37, 37, 37);
                     color: white;
                     padding: 15px;
+                    font-size: 15px;
                     border-radius: 10px 10px 0 0;
                 }
                 .length-setter {
@@ -44,6 +45,7 @@ body {
                 }
             }
             div#timer {
+                font-size: 25px;
                 grid-area: c;
                 background: rgb(82, 82, 82);
                 color: white;
