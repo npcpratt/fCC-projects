@@ -24,10 +24,14 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
             case '10': return cur[0].substr(0,4) + " Q4";
         }
     })
+    const yearsDate = dataset.map(cur => {
+        return new Date(cur[0])
+    })
+    const GDP = dataset.map(cur => cur[1]);
 
     // set scale
-    const xScale = d3.scaleLinear().domain([...years]).range([50, width+50]);
-    const yScale = d3.scaleLinear().domain([0, d3.max(dataset, d => d[1])]).range([30, height+30]);
+    const xScale = d3.scaleLinear().domain([0, 274]).range([50, width+50]);
+    const yScale = d3.scaleLinear().domain([0, d3.max(GDP)]).range([30, height+30]);
 
     // create main svg
     const chart = d3.select('#chart')
@@ -40,8 +44,8 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
          .data(dataset)
          .enter()
          .append('rect')
-         .attr('x', (d,i) => i*3)
-         .attr('y', 0)
+         .attr('x', (d,i) => xScale(d[0]))
+         .attr('y', d => height+30 - yScale(d[1]))
          .attr('fill', 'navy')
          .attr('width', rectWidth)
          .attr('height', d => yScale(d[1]))
