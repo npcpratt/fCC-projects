@@ -14,17 +14,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #212121;
+  background: #424242;
 }
 
 .container {
   width: 800px;
   height: 500px;
   padding: 20px;
-  background: #424242;
+  background: #212121;
   color: #f5f5f5;
   border-radius: 5px;
-  box-shadow: 0 2px 5px #161616;
+  box-shadow: 0 2px 5px #0f0f0f;
   position: relative;
 }
 .container h1 {
