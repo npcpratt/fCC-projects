@@ -72,7 +72,7 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
                 let i = scaledGDP.indexOf(d);
                 tooltip.transition().duration(100).style('opacity', 0.9);
                 tooltip.html(`${years[i]}<br>$${GDP[i]} Billion`)
-                       .attr('data-date', (d,i) => dataset[i][0])
+                       .attr('data-date', dataset[i][0])
                        .style('left', i * rectWidth + 30 + 'px')
                        .style('top', height - 70 + 'px')
                        .style('transform', 'translateX(60px)');
