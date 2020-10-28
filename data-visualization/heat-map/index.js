@@ -10,7 +10,7 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
       .append('h1')
       .text('Monthly Global Land-Surface Temperature')
       .append('p')
-      .text(`${dataset[0].year} - ${dataset[dataset.length - 1].year}: base temperature ${data.baseTemperature}`);
+      .text(`${dataset[0].year} - ${dataset[dataset.length - 1].year}: base temperature ${data.baseTemperature}°c`);
     
     const years = Math.ceil(dataset.length/12);
     const width = 5*years;
