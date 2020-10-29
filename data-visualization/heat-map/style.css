@@ -6,11 +6,15 @@ body {
 }
 .root {
     font-family: roboto, sans-serif;
+    display: grid;
+    place-items: center;
 }
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    width: max-content;
 }
 h1 {
     text-align: center;
@@ -22,6 +26,16 @@ p {
 }
 #tooltip {
     font-family: open sans, sans-serif;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    z-index: 1;
+    width: max-content;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px 10px;
 }
 rect:hover {
     stroke: black;
