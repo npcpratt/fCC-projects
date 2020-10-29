@@ -20,7 +20,7 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
     const padding = {
         left: 2*fontSize,
         right: 1*fontSize,
-        top: 7*fontSize,
+        top: 5*fontSize,
         bottom: 8*fontSize
     }
 
@@ -42,12 +42,19 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
                 .range([padding.top, height + padding.top]);
     const color = (variance) => {
         let colorScale = d3.scaleLinear()
-                           .domain([d3.min(dataset, d => d.variance), d3.max(dataset, d => d.variance)])
+                           .domain([d3.min(dataset, d => data.baseTemperature - d.variance), d3.max(dataset, d => data.baseTemperature - d.variance)])
                            .range([0,1]);
-        return d3.interpolateRdYlGn(colorScale(-variance));
+        return d3.interpolateRdYlGn(colorScale(data.baseTemperature - variance));
     }
 
-    // append axes
+    // append legend and axes
+    chart.append("g")
+    .append(() => legend({
+      color: d3.scaleSequential([d3.max(dataset, d => data.baseTemperature - d.variance), d3.min(dataset, d => data.baseTemperature - d.variance)], d3.interpolateRdYlGn),
+      title: "Temperature (°C)"
+    }))
+    .attr('transform', `translate(${padding.left}, ${padding.top})`)
+
     chart.append('g')
          .call(d3.axisTop(x))
          .attr('transform', `translate(0, ${padding.top})`)
@@ -67,7 +74,8 @@ fetch('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/maste
          .attr('y', (d,i) => (d.year - dataset[0].year)*10 + padding.top)
          .attr('fill', d => color(d.variance))
          .on('mouseover', (e,d) => {
-             tooltip.transition().duration(100).style('opacity', 0.9)
+             tooltip.transition().duration(100).style('opacity', 0.9);
+
          })
 
 })

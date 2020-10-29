@@ -23,3 +23,7 @@ p {
 #tooltip {
     font-family: open sans, sans-serif;
 }
+rect:hover {
+    stroke: black;
+    stroke-width: 1;
+}
