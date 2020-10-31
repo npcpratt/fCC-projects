@@ -9,7 +9,7 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
   const format = d3.format(",d");
 
   const treemap = data => d3.treemap()
-            .tile(d3.treemapSquarify)
+            .tile(d3.treemapResquarify)
             .size([width, height])
             .padding(1)
             .round(true)
@@ -24,6 +24,12 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
                 .attr('width', width)
                 .attr('height', height)
                 .style('font', '10px Roboto, sans-serif');
+
+  const tooltip = d3.select('.chart')
+                    .append('div')
+                    .attr('id', 'tooltip')
+                    .style('opacity', 0)
+
   const leaf = svg.selectAll("g")
                   .data(root.leaves())
                   .join("g")
@@ -33,13 +39,29 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
   .text(d => `${d.ancestors().reverse().map(d => d.data.name).join("/")}\n${format(d.value)}`);
 
   leaf.append("rect")
+      .attr('class', 'tile')
+      .attr('data-name', d => d.data.name)
+      .attr('data-category', d => d.data.category)
+      .attr('data-value', d => d.data.value)
       .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
       .attr("fill-opacity", 0.6)
       .attr("width", d => d.x1 - d.x0)
-      .attr("height", d => d.y1 - d.y0);
+      .attr("height", d => d.y1 - d.y0)
+      .on('mouseover', (e,d) => {
+        console.log(d.data.value)
+        tooltip.html(
+          `Name: ${d.data.name}<br>Category: ${d.data.category}<br>Value: ${d.data.value}`
+        )
+        tooltip.style('opacity', 1)
+        tooltip.attr('data-value', d.data.value)
+        tooltip.style('left', e.pageX + 10 + 'px')
+        tooltip.style('top', e.pageY - 28 + 'px')
+      })
+      .on('mouseout', () => {
+        tooltip.style('opacity', 0);
+      });
 
   leaf.append("text")
-      .attr("clip-path", d => d.clipUid)
     .selectAll("tspan")
     .data(d => d.data.name.split(/(?=[A-Z][a-z])|\s+/g).concat(format(d.value)))
     .join("tspan")
@@ -47,4 +69,8 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
       .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
       .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
       .text(d => d);
+
+  const legend = d3.select('.chart')
+    .append('svg')
+    .attr('id', 'legend')
 })
