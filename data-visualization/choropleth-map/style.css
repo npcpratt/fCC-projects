@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-  background: #111111;
-  color: #fff;
+  background: #78909c;
   padding: 0;
   margin: 0;
   display: flex;
@@ -14,6 +13,7 @@ body {
   width: 1000px;
   display: flex;
   padding-top: 1rem;
+  padding-bottom: 3rem;
   flex-direction: column;
   align-items: center;
 }
@@ -31,11 +31,11 @@ body {
 div.tooltip {
   position: absolute;
   padding: 10px;
-  font-size: 12px;
-  background: rgba(255, 255, 204, 0.9);
-  box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.6);
+  font-size: 13px;
+  background: #eceff1;
+  box-shadow: 1px 1px 10px #607d8b;
   border: 0px;
-  border-radius: 2px;
+  border-radius: 5px;
   pointer-events: none;
 }
 
