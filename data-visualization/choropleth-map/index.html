@@ -8,9 +8,20 @@
 </head>
 <body>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
     <div class="root">
         <div class="container">
-            
+            <h1 id="title">United States Educational Attainment</h1>
+            <div id="description">
+                Percentage of adults age 25 and older with a bachelor's degree or higher(2010-2014)
+            </div>
+            <div class="chart"></div>
+            <div id="source">
+                Source: 
+                <a href="https://www.ers.usda.gov/data-products/county-level-data-sets/download-data.aspx">
+                    USDA Economic Research Service
+                </a>
+            </div>
         </div>
     </div>
     <script src="index.js"></script>
