@@ -6,7 +6,6 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
   const width = 954;
   const height = 954;
   const color = d3.scaleOrdinal(d3.schemeCategory10);
-  const format = d3.format(",d");
 
   const treemap = data => d3.treemap()
             .tile(d3.treemapResquarify)
@@ -35,8 +34,6 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
                   .join("g")
                   .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
-  leaf.append("title")
-  .text(d => `${d.ancestors().reverse().map(d => d.data.name).join("/")}\n${format(d.value)}`);
 
   leaf.append("rect")
       .attr('class', 'tile')
@@ -48,7 +45,6 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
       .attr("width", d => d.x1 - d.x0)
       .attr("height", d => d.y1 - d.y0)
       .on('mouseover', (e,d) => {
-        console.log(d.data.value)
         tooltip.html(
           `Name: ${d.data.name}<br>Category: ${d.data.category}<br>Value: ${d.data.value}`
         )
@@ -63,7 +59,7 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
 
   leaf.append("text")
     .selectAll("tspan")
-    .data(d => d.data.name.split(/(?=[A-Z][a-z])|\s+/g).concat(format(d.value)))
+    .data(d => d.data.name.split(/(?=[A-Z][a-z])|\s+/g))
     .join("tspan")
       .attr("x", 3)
       .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
@@ -73,4 +69,22 @@ fetch('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-da
   const legend = d3.select('.chart')
     .append('svg')
     .attr('id', 'legend')
+    .attr('height', 300)
+    .attr('width', 200);
+
+  const legendElem = legend.selectAll('g')
+                          .data(data.children)
+                          .join('g')
+                          .attr('transform', (d,i) => `translate(20, ${i*40 + 10})`)
+                          
+  legendElem.append('rect')
+        .attr('class', 'legend-item')
+        .attr('height', 30)
+        .attr('width', 30)
+        .attr('fill', d => color(d.name))
+        .attr("fill-opacity", 0.6)
+  legendElem.append('text')
+        .attr('x', 40)
+        .attr('y', 20)
+        .text(d => d.name)
 })
