@@ -22,21 +22,34 @@ Promise.all([
                   .attr('width', '960')
     const tooltip = d3.select('.chart')
                       .append('div')
+                      .attr('id', 'tooltip')
                       .attr('class', 'tooltip')
                       .style('opacity', 0);
 
     // append legend
     svg.append("g")
-    .attr("transform", "translate(610,20)")
-    .append(() => legend({color, width: 260}));
+      .attr('id', 'legend')
+      .attr("transform", "translate(610,20)")
+      .append(() => legend({color, width: 260}));
 
     // create map
     svg.append("g")
-    .selectAll("path")
-    .data(topojson.feature(us, us.objects.counties).features)
-    .join("path")
+      .selectAll("path")
+      .data(topojson.feature(us, us.objects.counties).features)
+      .join("path")
       .attr("fill", d => color(colorScale(data.get(d.id))))
       .attr("d", path)
+      .attr('class', 'county')
+      .attr('data-education', (d) => {
+        let check = eduData.filter(item => item.fips === d.id);
+        if(check[0]) return check[0].bachelorsOrHigher;
+        else return 0;
+      })
+      .attr('data-fips', (d) => {
+        let check = eduData.filter(item => item.fips === d.id);
+        if(check[0]) return check[0].fips;
+        else return 0;
+      })
       .on('mouseover', (e, d) => {
         tooltip.style('opacity', 0.9);
         tooltip.html(() => {
@@ -49,6 +62,7 @@ Promise.all([
           if(check[0]) return check[0].bachelorsOrHigher;
           else return 0;
         })
+        
         tooltip.style('left', e.pageX + 10 + 'px')
         tooltip.style('top', e.pageY - 28 + 'px');
       })
