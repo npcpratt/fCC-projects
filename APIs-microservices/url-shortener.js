@@ -17,30 +17,32 @@ const URL = connection.model('URL', urlSchema);
 app.use(bodyParser.urlencoded({extended: false}));
 app.post('/api/shorturl/new', (req, res) => {
   let host = req.body.url.replace(/^(https?:\/\/)?(www.)?/, '');
-  console.log(host);
   dns.lookup(host, (err) => {
-    console.log(err);
     // check if valid URL
     if (err || /https?:\/\//.test(req.body.url) == false)
-    res.send({error: 'invalid url'});
+      res.send({error: 'invalid url'});
     else {
       // check if URL already exists in database
-      URL.find({url: req.body.url}, (err, docs) => {
-        console.log(docs);
+      URL.findOne({url: req.body.url}).exec((err, doc) => {
         if(err) return console.error(err);
-        if(docs !== []) {
-          res.send({original_url: req.body.url, short_url: docs[0]._id});
+        if(doc !== null) {
+          res.json({original_url: req.body.url, short_url: doc._id});
         } else {
-        // if not, create new record for URL
+          // if not, create new record for URL
           let urlObj = new URL({url: req.body.url});
           urlObj.save((err) => {
             if(err) return console.error(err);
-            URL.nextCount((err, count) => {
-              res.send({original_url: req.body.url, short_url: count});
-            });
-          })
+              res.json({original_url: req.body.url, short_url:urlObj._id});
+          });
         }
       })
     }
+  })
+});
+app.get('/api/shorturl/:id', (req, res) => {
+  URL.findOne({_id: req.params.id}).exec((err, doc) => {
+    if(err) return console.error(err);
+    if(doc !== null) res.redirect(doc.url);
+    else res.send('Not found');
   })
 });
