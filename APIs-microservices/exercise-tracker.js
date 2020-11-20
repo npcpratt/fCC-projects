@@ -34,29 +34,23 @@ app.post('/api/exercise/add', (req, res) => {
   User.findOne({_id: req.body.userId}, (err, doc) => {
     if (doc !== null) {
       if(err) return console.error(err);
+      let date = new Date();
+      if(req.body.date) date = req.body.date;
       let exercise = new Exercise({
       userId: req.body.userId,
       username: doc.username,
       description: req.body.description,
-      duration: req.body.duration
+      duration: req.body.duration,
+      date: date
       });
-      if(req.body.date) exercise.date = req.body.date;
       exercise.save(err => {
         if(err) return console.error(err);
-        if(req.body.date)
           res.json({
             _id: req.body.userId,
             username: doc.username,
             description: exercise.description,
             duration: exercise.duration,
             date: exercise.date
-          });
-        else
-          res.json({
-            _id: exercise.userId,
-            username: doc.username,
-            description: exercise.description,
-            duration: exercise.duration
           });
       })
     } else res.send('User does not exist')
