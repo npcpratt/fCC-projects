@@ -1,6 +1,12 @@
 var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var upload = multer()
 
 app.post('/api/fileanalyse', upload.none(), (req, res) => {
-  res.json(req.body)
-})
+  app.use('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+    res.json({
+      name: req.file.originalname,
+      type: req.file.mimetype,
+      size: req.file.size
+    })
+  })
+  
