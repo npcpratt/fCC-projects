@@ -1,54 +1,72 @@
 <body>
   <p>//TODO: build projects page lol</p>
-  <div style="width: 300px">
+  <div style="width: 550px">
     <fieldset>
       <legend style="box-sizing: border-box">fCC-projects:</legend>
-      <br />html-css
-      <ul>
-        <li><a href="html-css/tribute-page">tribute-page</a></li>
-        <li><a href="html-css/survey-form">survey-form</a></li>
-        <li>
-          <a href="html-css/product-landing-page">product-landing-page</a>
-        </li>
-        <li>
-          <a href="html-css/technical-documentation-page"
-            >technical-documentation-page</a
-          >
-        </li>
-        <li>
-          <a href="html-css/personal-portfolio-webpage"
-            >personal-portfolio-webpage</a
-          >
-        </li>
-      </ul>
-      frontend-libs
-      <ul>
-        <li><a href="frontend-libs/random-quote">random-quote</a></li>
-        <li>
-          <a href="frontend-libs/markdown-previewer">markdown-previewer</a>
-        </li>
-        <li><a href="frontend-libs/drum-machine">drum-machine</a></li>
-        <li><a href="frontend-libs/js-calculator">js-calculator</a></li>
-        <li><a href="frontend-libs/pomodoro-timer">pomodoro-timer</a></li>
-      </ul>
-      data-visualization
-      <ul>
-        <li><a href="data-visualization/bar-chart">bar-chart</a></li>
-        <li>
-          <a href="data-visualization/scatterplot-graph/">scatterplot-graph</a>
-        </li>
-        <li><a href="data-visualization/heat-map/">heat-map</a></li>
-        <li><a href="data-visualization/choropleth-map/">choropleth-map</a></li>
-        <li><a href="data-visualization/treemap/">treemap-diagram</a></li>
-      </ul>
-      APIs-microservices
-      <ul>
-        <li><a href="https://repl.it/@pratvar/boilerplate-project-timestamp">timestamp-microservice</a></li>
-        <li><a href="https://repl.it/@pratvar/boilerplate-project-headerparser">request-header-parser-microservice</a></li>
-        <li><a href="https://repl.it/@pratvar/boilerplate-project-urlshortener">url-shortener-microservice</a></li>
-        <li><a href="https://repl.it/@pratvar/boilerplate-project-exercisetracker">exercise-tracker</a></li>
-        <li><a href="https://repl.it/@pratvar/boilerplate-project-filemetadata">file-metadata-microservice</a></li>
-      </ul>
+      <br />
+      <div class="container">
+        <div>
+          html-css
+          <ul>
+            <li><a href="html-css/tribute-page">tribute-page</a></li>
+            <li><a href="html-css/survey-form">survey-form</a></li>
+            <li>
+              <a href="html-css/product-landing-page">product-landing-page</a>
+            </li>
+            <li>
+              <a href="html-css/technical-documentation-page"
+                >technical-documentation-page</a
+              >
+            </li>
+            <li>
+              <a href="html-css/personal-portfolio-webpage"
+                >personal-portfolio-webpage</a
+              >
+            </li>
+          </ul>
+          frontend-libs
+          <ul>
+            <li><a href="frontend-libs/random-quote">random-quote</a></li>
+            <li>
+              <a href="frontend-libs/markdown-previewer">markdown-previewer</a>
+            </li>
+            <li><a href="frontend-libs/drum-machine">drum-machine</a></li>
+            <li><a href="frontend-libs/js-calculator">js-calculator</a></li>
+            <li><a href="frontend-libs/pomodoro-timer">pomodoro-timer</a></li>
+          </ul>
+          data-visualization
+          <ul>
+            <li><a href="data-visualization/bar-chart">bar-chart</a></li>
+            <li>
+              <a href="data-visualization/scatterplot-graph/">scatterplot-graph</a>
+            </li>
+            <li><a href="data-visualization/heat-map/">heat-map</a></li>
+            <li><a href="data-visualization/choropleth-map/">choropleth-map</a></li>
+            <li><a href="data-visualization/treemap/">treemap-diagram</a></li>
+          </ul>
+        </div>
+        <div>
+          APIs-microservices
+          <ul>
+            <li><a href="https://repl.it/@pratvar/boilerplate-project-timestamp">timestamp-microservice</a></li>
+            <li><a href="https://repl.it/@pratvar/boilerplate-project-headerparser">request-header-parser-microservice</a></li>
+            <li><a href="https://repl.it/@pratvar/boilerplate-project-urlshortener">url-shortener-microservice</a></li>
+            <li><a href="https://repl.it/@pratvar/boilerplate-project-exercisetracker">exercise-tracker</a></li>
+            <li><a href="https://repl.it/@pratvar/boilerplate-project-filemetadata">file-metadata-microservice</a></li>
+          </ul>
+          quality-assurance
+          <ul>
+            <li>metric-imperial-converter</li>
+            <li>issue-tracker</li>
+            <li>personal-library</li>
+          </ul>
+          information-security
+          <ul>
+            <li>stock-price-checker</li>
+            <li>anonymous-message-board</li>
+          </ul>
+        </div>
+      </div>
     </fieldset>
   </div>
   <style>
@@ -61,7 +79,10 @@
     }
     ul {
       margin: 5px 0 25px 0;
-      padding-left: 25px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
     }
   </style>
 </body>
