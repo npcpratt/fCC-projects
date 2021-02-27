@@ -1,5 +1,5 @@
 JS
-function palindrome(str) {
+function checkIfPalindrome(str) {
   let arr = str.toLowerCase().split('');
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -14,3 +14,5 @@ function palindrome(str) {
   }
   return true;
 }
+
+checkIfPalindrome('saippuakivikauppias');
