@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 const e = React.createElement;
@@ -56,7 +54,7 @@ class App extends React.Component {
                     <div id="titlebar">Editor</div>
                     <textarea id="editor" value={this.state.input} onChange={this.handleChange}></textarea>
                 </div>
-                <div id="preview" dangerouslySetInnerHTML={{__html: marked(this.state.input)}} />
+                <div id="preview" dangerouslySetInnerHTML={{__html: marked.parse(this.state.input)}} />
             </div>
             
         );
